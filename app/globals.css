@@ -58,11 +58,10 @@ h1 em, .contact h2 em { color: #afb2b7; font-family: Georgia, "Times New Roman",
 .timeline-heading h2, .philosophy h2, .systems-intro h2 { margin: 0; font-size: clamp(2.7rem, 5vw, 5.5rem); line-height: 1; letter-spacing: -.055em; font-weight: 450; }
 .timeline-heading > p, .systems-intro > p { max-width: 380px; margin: 0 0 .5rem; color: #8d9299; font-size: .95rem; line-height: 1.7; }
 .timeline-shell { margin-top: clamp(4rem, 7vw, 7rem); scroll-margin-top: 96px; }
-.timeline-track { width: 100%; overflow-x: auto; cursor: grab; touch-action: pan-y; overscroll-behavior-x: contain; scrollbar-width: thin; scrollbar-color: #4b4f55 transparent; }
-.timeline-track:active { cursor: grabbing; }
+.timeline-track { width: 100%; overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x proximity; scrollbar-width: thin; scrollbar-color: #4b4f55 transparent; }
 .timeline-rail { position: relative; display: grid; grid-template-columns: repeat(6, minmax(150px, 1fr)); min-width: 940px; padding: 0 0 1rem; }
 .timeline-line { position: absolute; top: 44px; left: 5%; right: 5%; height: 1px; background: linear-gradient(90deg, #3f454b, var(--blue), var(--amber)); }
-.timeline-node { position: relative; z-index: 1; min-width: 150px; padding: 0 .5rem; display: grid; justify-items: center; color: #6f747b; background: transparent; border: 0; cursor: pointer; text-align: center; }
+.timeline-node { position: relative; z-index: 1; min-width: 150px; padding: 0 .5rem; display: grid; justify-items: center; color: #6f747b; background: transparent; border: 0; cursor: pointer; text-align: center; scroll-snap-align: center; }
 .node-year { height: 28px; font-size: .62rem; letter-spacing: .1em; text-transform: uppercase; }
 .node-dot { width: 11px; height: 11px; margin: 10px 0 17px; border-radius: 50%; border: 2px solid #1b1e22; background: #535860; box-shadow: 0 0 0 4px #0b0d10; transition: all .25s ease; }
 .node-label { font-size: .7rem; letter-spacing: .04em; white-space: nowrap; transition: color .25s ease; }
@@ -72,14 +71,15 @@ h1 em, .contact h2 em { color: #afb2b7; font-family: Georgia, "Times New Roman",
 .timeline-detail p { margin: 0; color: #c8c9c9; font-size: clamp(1.05rem, 1.8vw, 1.35rem); line-height: 1.55; }
 
 .chapters { padding-top: 5rem; }
+.chapters .section-kicker { color: #b7bac0; font-size: .75rem; font-weight: 700; }
 .chapter { display: grid; grid-template-columns: .6fr 1.4fr; gap: 7vw; padding: clamp(3rem, 6vw, 6rem) 0; border-bottom: 1px solid var(--line); }
 .chapter:first-of-type { border-top: 1px solid var(--line); }
-.chapter-meta { display: flex; gap: 2rem; color: #72777e; font-size: .65rem; text-transform: uppercase; letter-spacing: .14em; }
+.chapter-meta { display: flex; gap: 2rem; color: #9da1a8; font-size: .82rem; font-weight: 700; text-transform: uppercase; letter-spacing: .14em; }
 .chapter-meta span:first-child { color: var(--amber); }
 .chapter-copy h3 { margin: -.25rem 0 1.4rem; font-size: clamp(2rem, 4vw, 4rem); font-weight: 440; line-height: 1; letter-spacing: -.05em; }
 .chapter-copy > p { max-width: 760px; margin: 0; color: #a5a9af; font-size: clamp(1rem, 1.5vw, 1.18rem); line-height: 1.75; }
 .tag-row { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 2rem; }
-.tag-row span { padding: .48rem .7rem; border: 1px solid var(--line); border-radius: 999px; color: #858a91; font-size: .61rem; letter-spacing: .04em; }
+.tag-row span { padding: .56rem .82rem; border: 1px solid rgba(255,255,255,.16); border-radius: 999px; color: #aeb1b6; font-size: .74rem; font-weight: 550; letter-spacing: .035em; }
 
 .philosophy { width: 100%; max-width: none; background: #e8e4da; color: #101214; padding-inline: max(clamp(1.25rem, 6vw, 7rem), calc((100vw - 1440px)/2 + 7rem)); }
 .philosophy .section-kicker { border-color: rgba(0,0,0,.17); color: #6d6d68; }
@@ -90,7 +90,9 @@ h1 em, .contact h2 em { color: #afb2b7; font-family: Georgia, "Times New Roman",
 .diagram-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(0,0,0,.08) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,.08) 1px, transparent 1px); background-size: 48px 48px; mask-image: radial-gradient(circle, #000, transparent 80%); }
 .diagram-core { position: absolute; z-index: 3; left: 50%; top: 50%; translate: -50% -50%; width: 135px; aspect-ratio: 1; display: grid; place-items: center; text-align: center; border-radius: 50%; background: #14181d; color: #eeeae0; font-size: .75rem; letter-spacing: .05em; box-shadow: 0 22px 60px rgba(0,0,0,.25), 0 0 0 12px rgba(20,24,29,.08); }
 .diagram-core::after { content: ""; position: absolute; inset: -30px; border: 1px solid rgba(20,24,29,.2); border-radius: 50%; }
-.diagram-node { position: absolute; z-index: 2; padding: .55rem .7rem; border: 1px solid rgba(0,0,0,.18); background: rgba(232,228,218,.7); backdrop-filter: blur(8px); font-size: .61rem; text-transform: uppercase; letter-spacing: .08em; }
+.diagram-node { position: absolute; z-index: 2; padding: .55rem .7rem; border: 1px solid rgba(0,0,0,.18); background: rgba(232,228,218,.7); backdrop-filter: blur(8px); font-size: .61rem; text-transform: uppercase; letter-spacing: .08em; animation: diagram-drift 7s ease-in-out infinite alternate; }
+.diagram-node:nth-of-type(2) { animation-duration: 8.5s; animation-delay: -2s; }.diagram-node:nth-of-type(3) { animation-duration: 6.5s; animation-delay: -4s; }.diagram-node:nth-of-type(4) { animation-duration: 9s; animation-delay: -1s; }.diagram-node:nth-of-type(5) { animation-duration: 7.5s; animation-delay: -5s; }.diagram-node:nth-of-type(6) { animation-duration: 8s; animation-delay: -3s; }
+@keyframes diagram-drift { 0% { transform: translate3d(-5px, -3px, 0); } 50% { transform: translate3d(5px, 2px, 0); } 100% { transform: translate3d(-2px, 6px, 0); } }
 .node-a { left: 7%; top: 17%; }.node-b { right: 7%; top: 19%; }.node-c { left: 8%; bottom: 16%; }.node-d { right: 7%; bottom: 14%; }.node-e { left: 50%; top: 7%; translate: -50% 0; }.node-f { left: 50%; bottom: 5%; translate: -50% 0; white-space: nowrap; }
 .diagram-path { position: absolute; inset: 20%; border: 1px solid rgba(39,91,146,.35); border-radius: 50%; transform: rotate(35deg); }
 .path-b { inset: 28% 10%; border-color: rgba(158,99,34,.4); transform: rotate(-35deg); }

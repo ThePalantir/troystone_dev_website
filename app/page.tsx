@@ -4,6 +4,7 @@ import { Header } from "@/components/Header";
 import { Reveal } from "@/components/Reveal";
 import { SystemDiagram } from "@/components/SystemDiagram";
 import { Timeline } from "@/components/Timeline";
+import { capabilityCards } from "@/data/capabilityCards";
 
 const chapters = [
   {
@@ -80,11 +81,11 @@ const chapters = [
   },
 ];
 
-const systems = [
-  { icon: Workflow, eyebrow: "Operating system", title: "Employee lifecycle orchestration", challenge: "Identity, licensing, access, and communication often fracture across teams and tools.", architecture: "Entra + Microsoft Graph + Power Platform + governed approvals", outcome: "A consistent, auditable path from first request through every lifecycle change." },
-  { icon: Network, eyebrow: "Decision system", title: "Executive signal, not dashboard noise", challenge: "Leaders need the few operational signals that change a decision—not another destination to monitor.", architecture: "Connected source data + normalization + exception-led reporting", outcome: "Clearer operational visibility with less manual reconciliation and reporting effort." },
-  { icon: Braces, eyebrow: "Intelligent system", title: "Agentic production workflows", challenge: "AI pilots fail when they are disconnected from real permissions, business rules, and review.", architecture: "Specialized agents + trusted tools + human checkpoints + observability", outcome: "AI that can do bounded, useful work inside an accountable production process." },
-];
+const capabilityIcons: Record<string, typeof Workflow> = {
+  "operating-system": Workflow,
+  "decision-system": Network,
+  "intelligent-system": Braces,
+};
 
 const principles = [
   {
@@ -101,15 +102,15 @@ const principles = [
     ],
   },
   {
-    title: "Automate with judgment",
+    title: "Automate with judgment.",
     copy: [
-      "Use machines for consistency and scale. Keep humans ‘in-the-loop’ for judgment, exceptions, accountability, and care.",
+      "Deterministic automation should remain the default. Agentic AI belongs where it delivers capabilities that rules alone cannot. Preserve human oversight for high-impact decisions, exceptions, accountability, and care.",
     ],
   },
 ];
 
 export default function Home() {
-  const jsonLd = { "@context": "https://schema.org", "@type": "Person", name: "Troy Stone", url: "https://troystone.dev", jobTitle: "Enterprise Systems Architect", sameAs: ["https://www.linkedin.com/in/troystone", "https://github.com/ThePalantir"], knowsAbout: ["Enterprise Architecture", "Power Platform", "Microsoft Graph", "Automation", "Agentic AI"] };
+  const jsonLd = { "@context": "https://schema.org", "@type": "Person", name: "Troy Stone", url: "https://troystone.dev", jobTitle: "Enterprise Systems Architect", sameAs: ["https://www.linkedin.com/in/troystone"], knowsAbout: ["Enterprise Architecture", "Power Platform", "Microsoft Graph", "Automation", "Agentic AI"] };
   return <>
     <a className="skip-link" href="#main">Skip to content</a><Header />
     <main id="main">
@@ -185,19 +186,19 @@ export default function Home() {
 
       <section className="manifesto section" aria-labelledby="mission-title"><Reveal className="section-kicker"><span>Mission</span></Reveal><Reveal><h2 id="mission-title" className="display-copy">Technology changes.<br /><span>Building what lasts does not.</span></h2></Reveal><div className="manifesto-grid"><Reveal className="manifesto-lead"><p>The tools are new. The hard parts are familiar.</p></Reveal><Reveal className="manifesto-body" delay={0.08}><p>Understand the organization. Turn complexity into clarity. Design around real-world constraints. Build reliable, maintainable systems that evolve with the business.</p><p>Those principles have remained constant, even as the technologies and responsibilities have changed.</p></Reveal></div></section>
 
-      <section className="timeline-section section" id="story" aria-labelledby="timeline-title"><Reveal className="section-kicker"><span>A continuous practice</span></Reveal><Reveal className="timeline-heading"><div><p className="eyebrow">Thirty years of early adoption and adaptation, turning emerging technologies into practical business solutions.</p><h2 id="timeline-title">Every era builds<br />on the one before it.</h2></div><p>Drag, scroll, or select an era. The technology evolves; the architectural principles compound.</p></Reveal><Reveal><Timeline /></Reveal></section>
+      <section className="timeline-section section" id="story" aria-labelledby="timeline-title"><Reveal className="section-kicker"><span>A continuous practice</span></Reveal><Reveal className="timeline-heading"><div><p className="eyebrow">Thirty years of early adoption and adaptation, turning emerging technologies into practical business solutions.</p><h2 id="timeline-title">Every era builds<br />on the one before it.</h2></div><p>Select an era to see how each generation of technology shaped the systems, decisions, and disciplines that followed.</p></Reveal><Reveal><Timeline /></Reveal></section>
 
       <section className="chapters section" aria-labelledby="chapters-title"><Reveal className="section-kicker"><span>The enterprise system</span></Reveal><h2 id="chapters-title" className="sr-only">Six connected layers of enterprise technology</h2>{chapters.map((chapter) => <Reveal className="chapter" key={chapter.index}><div className="chapter-meta"><span>{chapter.era}</span></div><div className="chapter-copy"><h3>{chapter.title}</h3><p>{chapter.copy}</p><div className="tag-row">{chapter.tags.map((tag) => <span key={tag}>{tag}</span>)}</div></div></Reveal>)}</section>
 
       <section className="philosophy section" id="perspective" aria-labelledby="philosophy-title"><Reveal className="section-kicker"><span>Technology philosophy</span></Reveal><div className="philosophy-grid"><Reveal><p className="eyebrow">The practical AI thesis</p><h2 id="philosophy-title">Intelligence is a layer—not an application or a model.<br />The system is the product.</h2><p className="philosophy-copy">A useful AI system knows what information it can access, which actions it is authorized to take, when a person must make the decision, and how every action becomes observable. Intelligence without guardrails is risk. Intelligence without auditability is difficult to trust. The model matters. The surrounding architecture matters more.</p></Reveal><Reveal delay={0.1}><SystemDiagram /></Reveal></div><div className="principles">{principles.map((principle, i) => <Reveal className="principle" delay={i * 0.06} key={principle.title}><h3>{principle.title}</h3>{principle.copy.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}</Reveal>)}</div></section>
 
-      <section className="systems section" id="systems" aria-labelledby="systems-title"><Reveal className="section-kicker"><span>Selected systems</span></Reveal><Reveal className="systems-intro"><div><p className="eyebrow">Architecture in practice</p><h2 id="systems-title">The work behind<br />the interface.</h2></div><p>Representative system patterns from enterprise automation and applied AI. Each starts with an operating problem—not a technology shopping list.</p></Reveal><div className="system-cards">{systems.map((system, i) => { const Icon = system.icon; return <Reveal className="system-card" delay={i * 0.08} key={system.title}><div className="card-top"><Icon size={20} /></div><p className="eyebrow">{system.eyebrow}</p><h3>{system.title}</h3><dl><div><dt>Challenge</dt><dd>{system.challenge}</dd></div><div><dt>Architecture</dt><dd>{system.architecture}</dd></div><div><dt>Outcome</dt><dd>{system.outcome}</dd></div></dl></Reveal>; })}</div></section>
+      <section className="systems section" id="systems" aria-labelledby="systems-title"><Reveal className="section-kicker"><span>Selected systems</span></Reveal><Reveal className="systems-intro"><div><p className="eyebrow">Architecture in practice</p><h2 id="systems-title">The work behind<br />the interface.</h2></div><p>These representative system patterns reflect a consistent philosophy: understand the operating problem, design the architecture, then select the technology that best fits the need.</p></Reveal><div className="system-cards">{capabilityCards.map((card, i) => { const Icon = capabilityIcons[card.id] ?? Braces; return <Reveal className="system-card" delay={i * 0.08} key={card.id}><div className="card-top"><Icon size={20} /></div><p className="eyebrow">{card.category}</p><h3>{card.title}</h3><dl><div><dt>Challenge</dt><dd>{card.challenge}</dd></div><div><dt>Architecture</dt><dd>{card.architecture}</dd></div><div><dt>Outcome</dt><dd>{card.outcome}</dd></div></dl></Reveal>; })}</div></section>
 
-      <section className="evidence section" aria-labelledby="evidence-title"><Reveal className="section-kicker"><span>Evidence of practice</span></Reveal><div className="evidence-grid"><Reveal className="quote-block"><ShieldCheck size={26} /><blockquote id="evidence-title">“Technology exists to enable business.”</blockquote><p>That principle appears repeatedly in recommendations from the people Troy has led: high standards, loyalty to the team, and an insistence that technology earn its place through outcomes.</p><cite>Leadership recommendation, public LinkedIn profile</cite></Reveal><Reveal className="now-block" delay={0.1}><p className="eyebrow">Now / 2026</p><h3>Testing the edge.<br />Keeping what works.</h3><p>Current focus: production agent workflows, AI-assisted software delivery, enterprise voice systems, and the governance required to connect them safely to real organizations.</p><div className="now-links"><a href="https://www.linkedin.com/in/troystone" target="_blank" rel="noreferrer">LinkedIn <ArrowUpRight size={15} /></a><a href="https://github.com/ThePalantir" target="_blank" rel="noreferrer">GitHub <ArrowUpRight size={15} /></a></div></Reveal></div></section>
+      <section className="evidence section" aria-labelledby="evidence-title"><Reveal className="section-kicker"><span>Evidence of practice</span></Reveal><div className="evidence-grid"><Reveal className="quote-block"><ShieldCheck size={26} /><blockquote id="evidence-title">“Technology exists to enable business.”</blockquote><p>That principle appears repeatedly in recommendations from the people Troy has led: high standards, loyalty to the team, and an insistence that technology earn its place through outcomes.</p><cite>Leadership recommendation, public LinkedIn profile</cite></Reveal><Reveal className="now-block" delay={0.1}><p className="eyebrow">Now / 2026</p><h3>Testing the edge.<br />Keeping what works.</h3><p>Current focus: production agent workflows, AI-assisted software delivery, enterprise voice systems, and the governance required to connect them safely to real organizations.</p><div className="now-links"><a href="https://www.linkedin.com/in/troystone" target="_blank" rel="noreferrer">LinkedIn <ArrowUpRight size={15} /></a></div></Reveal></div></section>
 
       <section className="contact section" id="contact" aria-labelledby="contact-title"><Reveal><p className="eyebrow"><span className="status-dot" /> Open to consequential problems</p><h2 id="contact-title">Let’s make the complex<br /><em>useful.</em></h2><p>If you are modernizing a critical system, connecting AI to real operations, or trying to see the architecture hidden inside a difficult problem, I would like to hear about it.</p><a className="button button-primary contact-button" href="https://www.linkedin.com/in/troystone" target="_blank" rel="noreferrer">Start a conversation <ArrowUpRight size={17} /></a></Reveal></section>
     </main>
-    <footer><a className="wordmark" href="#top" aria-label="Troy Stone, back to top"><Image className="brand-mark" src="/ts-initials.png" alt="" width={64} height={48} /></a><p>Enterprise architecture · Automation · Intelligent systems</p><div><a href="https://www.linkedin.com/in/troystone" aria-label="LinkedIn">in</a><a href="https://github.com/ThePalantir" aria-label="GitHub">gh</a></div></footer>
+    <footer><a className="wordmark" href="#top" aria-label="Troy Stone, back to top"><Image className="brand-mark" src="/ts-initials.png" alt="" width={64} height={48} /></a><p>Enterprise architecture · Automation · Intelligent systems</p><div><a href="https://www.linkedin.com/in/troystone" aria-label="LinkedIn">in</a></div></footer>
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }} />
   </>;
 }

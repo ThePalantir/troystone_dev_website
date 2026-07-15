@@ -1,5 +1,5 @@
 "use client";
-import { useRef, useState, type PointerEvent as ReactPointerEvent } from "react";
+import { useRef, useState } from "react";
 import { motion, useReducedMotion } from "motion/react";
 
 const eras = [
@@ -16,34 +16,8 @@ export function Timeline() {
   const reduced = useReducedMotion();
   const shellRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
-  const drag = useRef({ active: false, moved: false, startX: 0, scrollLeft: 0 });
-
-  const handlePointerDown = (event: ReactPointerEvent<HTMLDivElement>) => {
-    if (event.pointerType === "mouse" && event.button !== 0) return;
-    const track = trackRef.current;
-    if (!track) return;
-    drag.current = { active: true, moved: false, startX: event.clientX, scrollLeft: track.scrollLeft };
-    track.setPointerCapture(event.pointerId);
-  };
-
-  const handlePointerMove = (event: ReactPointerEvent<HTMLDivElement>) => {
-    const track = trackRef.current;
-    if (!track || !drag.current.active) return;
-    const distance = event.clientX - drag.current.startX;
-    if (Math.abs(distance) > 5) drag.current.moved = true;
-    track.scrollLeft = drag.current.scrollLeft - distance;
-  };
-
-  const handlePointerEnd = (event: ReactPointerEvent<HTMLDivElement>) => {
-    drag.current.active = false;
-    if (trackRef.current?.hasPointerCapture(event.pointerId)) trackRef.current.releasePointerCapture(event.pointerId);
-  };
 
   const selectEra = (index: number, button: HTMLButtonElement) => {
-    if (drag.current.moved) {
-      drag.current.moved = false;
-      return;
-    }
     setActive(index);
     const track = trackRef.current;
     if (track) {
@@ -53,7 +27,7 @@ export function Timeline() {
   };
 
   return <div className="timeline-shell" ref={shellRef}>
-    <div className="timeline-track" ref={trackRef} onPointerDown={handlePointerDown} onPointerMove={handlePointerMove} onPointerUp={handlePointerEnd} onPointerCancel={handlePointerEnd}>
+    <div className="timeline-track" ref={trackRef}>
       <div className="timeline-rail" role="tablist" aria-label="Technology eras"><span className="timeline-line" aria-hidden="true" />
         {eras.map((era, index) => <button key={era.label} className={index === active ? "timeline-node active" : "timeline-node"} role="tab" aria-selected={index === active} aria-controls="timeline-detail" onClick={(event) => selectEra(index, event.currentTarget)}><span className="node-year">{era.year}</span><span className="node-dot" aria-hidden="true" /><span className="node-label">{era.label}</span></button>)}
       </div>
