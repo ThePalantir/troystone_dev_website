@@ -6,10 +6,78 @@ import { SystemDiagram } from "@/components/SystemDiagram";
 import { Timeline } from "@/components/Timeline";
 
 const chapters = [
-  { index: "01", era: "Infrastructure", title: "Scale teaches discipline.", copy: "Enterprise networking, telephony, and Voice over IP made reliability non-negotiable. When systems carry millions of interactions, architecture is not a diagram. It is a promise the organization has to keep.", tags: ["Enterprise networking", "Voice over IP", "Global convergence"] },
-  { index: "02", era: "Leadership", title: "Technology serves a public outcome.", copy: "Eight years as Chief Information Officer for Lehigh County expanded the work: public safety technology, enterprise initiatives, governance, budgets, and the responsibility of building teams people could trust.", tags: ["Executive leadership", "Public safety", "Digital transformation"] },
-  { index: "03", era: "Automation", title: "Good systems remove friction.", copy: "At enterprise scale, small manual steps become structural drag. Microsoft 365, Power Platform, Graph, Entra, PowerShell, and Python create a connected operating layer—less handoff, better data, clearer decisions.", tags: ["Power Platform", "Microsoft Graph", "Identity automation"] },
-  { index: "04", era: "Intelligence", title: "AI belongs inside the system.", copy: "The practical opportunity is not a chatbot sitting beside the business. It is intelligence designed into the workflows, permissions, data, and decisions the business already depends on.", tags: ["Agentic workflows", "Enterprise AI", "Production systems"] },
+  {
+    index: "01",
+    era: "Infrastructure",
+    title: "Scale teaches discipline.",
+    copy:
+      "Enterprise networks, telecommunications, and Voice over IP established the foundation: reliability, resilience, security, and performance are not optional when organizations depend on the system.",
+    tags: [
+      "Enterprise networks",
+      "Voice over IP",
+      "Global infrastructure",
+    ],
+  },
+  {
+    index: "02",
+    era: "Applications",
+    title: "Applications turn architecture into work.",
+    copy:
+      "Enterprise applications connect technology to the people, processes, and decisions that move an organization forward. The best applications simplify complex work without concealing the controls required to operate it responsibly.",
+    tags: [
+      "Enterprise applications",
+      "Business systems",
+      "Global deployments",
+    ],
+  },
+  {
+    index: "03",
+    era: "Data",
+    title: "Trusted data makes better decisions possible.",
+    copy:
+      "From actuarial analysis and biostatistics to executive reporting and operational analytics, data has remained a constant throughout the work: define the right measures, establish trust in the information, and make complexity useful.",
+    tags: [
+      "Analytics",
+      "Decision support",
+      "Business intelligence",
+    ],
+  },
+  {
+    index: "04",
+    era: "Leadership",
+    title: "Technology serves an organizational outcome.",
+    copy:
+      "Executive technology leadership requires more than technical judgment. It requires strategy, governance, budgets, organizational change, public accountability, and teams capable of delivering systems people can trust.",
+    tags: [
+      "Executive leadership",
+      "Technology strategy",
+      "Digital transformation",
+    ],
+  },
+  {
+    index: "05",
+    era: "Automation",
+    title: "Good systems remove friction.",
+    copy:
+      "At enterprise scale, small manual steps become structural drag. Microsoft 365, Power Platform, Graph, Entra, PowerShell, Python, and integrated workflows create a more connected operating layer with fewer handoffs and clearer decisions.",
+    tags: [
+      "Power Platform",
+      "Systems integration",
+      "Identity automation",
+    ],
+  },
+  {
+    index: "06",
+    era: "Intelligence",
+    title: "AI belongs inside the system.",
+    copy:
+      "The practical opportunity is not an isolated chatbot or demonstration. It is intelligence designed into the workflows, permissions, data, applications, and decisions the organization already depends on.",
+    tags: [
+      "Agentic systems",
+      "Enterprise AI",
+      "Production intelligence",
+    ],
+  },
 ];
 
 const systems = [
@@ -30,16 +98,80 @@ export default function Home() {
     <a className="skip-link" href="#main">Skip to content</a><Header />
     <main id="main">
       <section className="hero" id="top">
-        <Image className="hero-art" src="/system-horizon.png" alt="" fill priority sizes="100vw" /><div className="hero-shade" /><div className="hero-grid" aria-hidden="true" />
-        <div className="hero-content"><p className="eyebrow hero-eyebrow"><span /> Enterprise systems architect</p><h1>I build intelligent systems organizations <em>actually deploy.</em></h1><p className="hero-copy">Three decades of infrastructure, executive leadership, enterprise architecture, automation, and AI—applied to the work that matters.</p><div className="hero-actions"><a className="button button-primary" href="#story">Follow the work <ArrowDown size={16} /></a><a className="text-link" href="#systems">See selected systems <ArrowRight size={16} /></a></div></div>
-        <div className="hero-proof" aria-label="Experience summary"><div><strong>30+</strong><span>Years building<br />through change</span></div><div><strong>4</strong><span>Eras of<br />technology</span></div><div><strong>1</strong><span>Constant:<br />useful outcomes</span></div></div>
+        <Image
+          className="hero-art"
+          src="/system-horizon.png"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+        />
+        <div className="hero-shade" />
+        <div className="hero-grid" aria-hidden="true" />
+
+        <div className="hero-content">
+          <p className="eyebrow hero-eyebrow">
+            <span />
+            Technology strategist · Systems architect
+          </p>
+
+          <h1>
+            Building intelligent systems organizations <em>actually deploy.</em>
+          </h1>
+
+          <p className="hero-copy">
+            Three decades connecting every layer of enterprise technology—from
+            global infrastructure, applications, and data to executive leadership,
+            automation, and agentic AI.
+          </p>
+
+          <div className="hero-actions">
+            <a className="button button-primary" href="#story">
+              Follow the work
+              <ArrowDown size={16} />
+            </a>
+            <a className="text-link" href="#systems">
+              See selected systems
+              <ArrowRight size={16} />
+            </a>
+          </div>
+        </div>
+
+        <div className="hero-proof" aria-label="Experience summary">
+          <div>
+            <strong>30+</strong>
+            <span>
+              Years building
+              <br />
+              through change
+            </span>
+          </div>
+
+          <div>
+            <strong>6</strong>
+            <span>
+              Enterprise
+              <br />
+              system layers
+            </span>
+          </div>
+
+          <div>
+            <strong>1</strong>
+            <span>
+              Constant:
+              <br />
+              useful outcomes
+            </span>
+          </div>
+        </div>
       </section>
 
-      <section className="manifesto section" aria-labelledby="mission-title"><Reveal className="section-kicker"><span>Mission</span><span>01 — 07</span></Reveal><Reveal><h2 id="mission-title" className="display-copy">Technology changes.<br /><span>Building what lasts does not.</span></h2></Reveal><div className="manifesto-grid"><Reveal className="manifesto-lead"><p>The tools are new. The hard parts are familiar.</p></Reveal><Reveal className="manifesto-body" delay={0.08}><p>Understand the organization. Make complexity legible. Design for the constraints people actually live with. Build a system that can be operated, trusted, and improved.</p><p>That is the thread connecting converged networks, public-sector leadership, Microsoft cloud, enterprise automation, and agentic AI.</p></Reveal></div></section>
+      <section className="manifesto section" aria-labelledby="mission-title"><Reveal className="section-kicker"><span>Mission</span><span>01 — 07</span></Reveal><Reveal><h2 id="mission-title" className="display-copy">Technology changes.<br /><span>Building what lasts does not.</span></h2></Reveal><div className="manifesto-grid"><Reveal className="manifesto-lead"><p>The tools are new. The hard parts are familiar.</p></Reveal><Reveal className="manifesto-body" delay={0.08}><p>Understand the organization. Make complexity legible. Design for the constraints people actually live with. Build a system that can be operated, trusted, and improved.</p><p>The work has crossed every layer of enterprise technology: infrastructure, applications, data, leadership, automation, and intelligence. The value comes from understanding how those layers operate as one system.</p></Reveal></div></section>
 
-      <section className="timeline-section section" id="story" aria-labelledby="timeline-title"><Reveal className="section-kicker"><span>A continuous practice</span><span>02 — 07</span></Reveal><Reveal className="timeline-heading"><div><p className="eyebrow">Thirty years of adaptation</p><h2 id="timeline-title">Every era builds<br />on the one before it.</h2></div><p>Drag, scroll, or select an era. The technology evolves; the architectural principles compound.</p></Reveal><Reveal><Timeline /></Reveal></section>
+      <section className="timeline-section section" id="story" aria-labelledby="timeline-title"><Reveal className="section-kicker"><span>A continuous practice</span><span>02 — 07</span></Reveal><Reveal className="timeline-heading"><div><p className="eyebrow">A career across the enterprise</p><h2 id="timeline-title">Every layer informs<br />the one above it.</h2></div><p>The technologies evolve, but the disciplines compound: infrastructure, applications, data, leadership, automation, and intelligence become more valuable when they are designed as one connected system.</p></Reveal><Reveal><Timeline /></Reveal></section>
 
-      <section className="chapters section" aria-labelledby="chapters-title"><Reveal className="section-kicker"><span>The progression</span><span>03 — 07</span></Reveal><h2 id="chapters-title" className="sr-only">Career progression</h2>{chapters.map((chapter) => <Reveal className="chapter" key={chapter.index}><div className="chapter-meta"><span>{chapter.index}</span><span>{chapter.era}</span></div><div className="chapter-copy"><h3>{chapter.title}</h3><p>{chapter.copy}</p><div className="tag-row">{chapter.tags.map((tag) => <span key={tag}>{tag}</span>)}</div></div></Reveal>)}</section>
+      <section className="chapters section" aria-labelledby="chapters-title"><Reveal className="section-kicker"><span>The enterprise system</span><span>03 — 07</span></Reveal><h2 id="chapters-title" className="sr-only">Six connected layers of enterprise technology</h2>{chapters.map((chapter) => <Reveal className="chapter" key={chapter.index}><div className="chapter-meta"><span>{chapter.index}</span><span>{chapter.era}</span></div><div className="chapter-copy"><h3>{chapter.title}</h3><p>{chapter.copy}</p><div className="tag-row">{chapter.tags.map((tag) => <span key={tag}>{tag}</span>)}</div></div></Reveal>)}</section>
 
       <section className="philosophy section" id="perspective" aria-labelledby="philosophy-title"><Reveal className="section-kicker"><span>Technology philosophy</span><span>04 — 07</span></Reveal><div className="philosophy-grid"><Reveal><p className="eyebrow">The practical AI thesis</p><h2 id="philosophy-title">Intelligence is a layer.<br />The system is the product.</h2><p className="philosophy-copy">A useful AI system knows what it can access, which action it may take, when a person must decide, and how the result becomes observable. The model matters. The surrounding architecture matters more.</p></Reveal><Reveal delay={0.1}><SystemDiagram /></Reveal></div><div className="principles">{principles.map(([number, title, copy], i) => <Reveal className="principle" delay={i * 0.06} key={number}><span>{number}</span><h3>{title}</h3><p>{copy}</p></Reveal>)}</div></section>
 
