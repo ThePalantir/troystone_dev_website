@@ -125,43 +125,6 @@ export default function Home() {
         />
         <div className="hero-shade" />
         <div className="hero-grid" aria-hidden="true" />
-        <svg
-          className="hero-tracer"
-          viewBox="0 0 1000 1000"
-          preserveAspectRatio="none"
-          aria-hidden="true"
-        >
-          <defs>
-            <filter id="hero-tracer-glow" x="-500%" y="-500%" width="1000%" height="1000%">
-              <feGaussianBlur stdDeviation="8" result="wideGlow" />
-              <feGaussianBlur in="SourceGraphic" stdDeviation="2.5" result="tightGlow" />
-              <feMerge>
-                <feMergeNode in="wideGlow" />
-                <feMergeNode in="tightGlow" />
-                <feMergeNode in="SourceGraphic" />
-              </feMerge>
-            </filter>
-          </defs>
-          <g className="hero-tracer-light" filter="url(#hero-tracer-glow)">
-            <circle r="7" fill="#ffc66f" opacity=".42" />
-            <circle r="3.2" fill="#fff8df" />
-            <animate
-              attributeName="opacity"
-              values="0;1;1;0"
-              keyTimes="0;.08;.82;1"
-              dur="3.2s"
-              begin="1s"
-              fill="freeze"
-            />
-            <animateMotion
-              path="M 300 1000 C 440 900 670 790 760 690 C 790 655 775 625 755 600 C 725 565 740 520 790 470 C 845 425 925 380 1000 340"
-              dur="3.2s"
-              begin="1s"
-              calcMode="paced"
-              fill="freeze"
-            />
-          </g>
-        </svg>
 
         <div className="hero-content">
           <p className="eyebrow hero-eyebrow">
