@@ -245,7 +245,6 @@ footer .footer-links .linkedin-link:hover { color: #fff; background: #004182; tr
   .manifesto-grid,.chapter { grid-template-columns: 1fr; gap: 2.4rem; }.chapter-meta { justify-content: space-between; }.chapter-copy h3 { font-size: 2.3rem; }
   .timeline-rail { min-width: 870px; }
   .principles { grid-template-columns: 1fr; }.principle,.principle + .principle { padding: 2rem 0; border-left: 0; border-bottom: 1px solid rgba(0,0,0,.15); }.principle h3 { margin-top: 1.5rem; }
-  .system-diagram { min-height: 380px; }.diagram-node { font-size: .52rem; }.diagram-core { width: 108px; }
   .now-block { min-height: 390px; }
   footer { grid-template-columns: 1fr auto; }footer > p { display: none; }
 }
@@ -350,62 +349,6 @@ main[id], main > section[id] { scroll-margin-top: 92px; }
   footer > p, .built-by { font-size: .8125rem; }
   .principle p { font-size: .9375rem; }
 
-  .system-diagram {
-    min-height: 0;
-    padding: 1.25rem;
-    display: grid;
-    gap: .65rem;
-    overflow: visible;
-    background: linear-gradient(180deg, #dedacf, #d5d0c4);
-  }
-  .diagram-grid { opacity: .55; }
-  .diagram-path { display: none; }
-  .diagram-node, .diagram-core {
-    position: relative;
-    inset: auto;
-    translate: none;
-    transform: none;
-    width: 100%;
-    min-height: 48px;
-    aspect-ratio: auto;
-    display: grid;
-    place-items: center;
-    margin: 0;
-    padding: .8rem 1rem;
-    border: 1px solid rgba(20,24,29,.18);
-    border-radius: .55rem;
-    background: rgba(244,241,233,.82);
-    color: #202327;
-    font-size: .8125rem;
-    font-weight: 700;
-    line-height: 1.35;
-    text-align: center;
-    text-transform: uppercase;
-    letter-spacing: .07em;
-    white-space: normal;
-    animation: none;
-    backdrop-filter: blur(8px);
-    box-shadow: 0 8px 22px rgba(20,24,29,.06);
-  }
-  .diagram-node::after {
-    content: "↓";
-    position: absolute;
-    z-index: 4;
-    left: 50%;
-    bottom: -.9rem;
-    translate: -50% 0;
-    color: #446f99;
-    font-size: .875rem;
-  }
-  .diagram-core {
-    min-height: 76px;
-    border: 0;
-    border-radius: .7rem;
-    color: #f0eee8;
-    background: #14181d;
-    box-shadow: 0 16px 35px rgba(20,24,29,.2);
-  }
-  .diagram-core::after { display: none; }
 }
 
 @media (max-width: 350px) {
@@ -647,4 +590,268 @@ p { text-wrap: pretty; }
 
 @media (prefers-reduced-motion: reduce) {
   .accomplishments-viewport { scroll-behavior: auto; }
+}
+
+/* Mobile art direction for the practical AI thesis. */
+.mobile-system-model { display: none; }
+
+@media (max-width: 768px) {
+  .philosophy {
+    position: relative;
+    padding-block: clamp(5.5rem, 15vw, 7rem) clamp(6rem, 16vw, 7.5rem);
+    background:
+      linear-gradient(180deg, rgba(255,255,255,.16), transparent 24%),
+      #e3ded3;
+  }
+  [data-theme="light"] .philosophy {
+    background:
+      linear-gradient(180deg, rgba(255,255,255,.2), transparent 24%),
+      #ddd8cd;
+  }
+  .philosophy .section-kicker {
+    margin-bottom: clamp(3.5rem, 10vw, 4.5rem);
+    padding-bottom: 1rem;
+    font-size: .75rem;
+    letter-spacing: .16em;
+  }
+  .philosophy-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: clamp(3.5rem, 10vw, 5rem);
+  }
+  .philosophy-content { max-width: 670px; }
+  .philosophy-content .eyebrow {
+    margin-bottom: 1.15rem;
+    color: #555954;
+    font-size: .8125rem;
+    letter-spacing: .15em;
+  }
+  .philosophy h2 {
+    max-width: 680px;
+    font-size: clamp(2.55rem, 8.7vw, 4.25rem);
+    line-height: 1.01;
+    letter-spacing: -.052em;
+  }
+  .philosophy-copy {
+    max-width: 620px;
+    margin-top: clamp(1.6rem, 5vw, 2rem);
+    color: #4d514e;
+    font-size: 1.025rem;
+    line-height: 1.75;
+  }
+  .philosophy-visual { width: 100%; }
+  .system-diagram-desktop { display: none; }
+
+  .mobile-system-model {
+    display: block;
+    width: 100%;
+    color: #202428;
+  }
+  .model-intro {
+    margin: 0 0 1.6rem;
+    color: #555a57;
+    font-size: .75rem;
+    font-weight: 750;
+    text-transform: uppercase;
+    letter-spacing: .14em;
+  }
+  .model-flow {
+    position: relative;
+    display: grid;
+    gap: 1rem;
+    padding-left: 1.35rem;
+  }
+  .model-spine {
+    position: absolute;
+    z-index: 0;
+    top: 1.25rem;
+    bottom: 3.25rem;
+    left: 5px;
+    width: 1px;
+    transform-origin: top;
+    background: linear-gradient(180deg, rgba(154,100,38,.38), #a96d28 74%, #d99a4b);
+  }
+  .model-band {
+    position: relative;
+    z-index: 1;
+    padding: 1.15rem 1rem 1.25rem;
+    border-radius: 3px;
+    background: rgba(244,241,233,.33);
+    box-shadow: inset 0 1px rgba(255,255,255,.4), 0 13px 28px rgba(20,24,29,.055);
+  }
+  .model-band-2 { background: rgba(244,241,233,.42); }
+  .model-band-3 { background: rgba(244,241,233,.52); }
+  .model-junction,
+  .model-outcome-junction {
+    position: absolute;
+    z-index: 2;
+    left: -1.29rem;
+    top: 1.22rem;
+    width: 9px;
+    height: 9px;
+    border: 2px solid #dfd9cd;
+    border-radius: 50%;
+    background: #9a6426;
+    box-shadow: 0 0 0 3px rgba(154,100,38,.1);
+  }
+  .model-band-heading {
+    display: flex;
+    align-items: baseline;
+    gap: .65rem;
+    margin-bottom: 1rem;
+  }
+  .model-band-heading span {
+    color: #915d22;
+    font-size: .7rem;
+    font-weight: 800;
+    letter-spacing: .08em;
+  }
+  .model-band-heading strong {
+    color: #555a57;
+    font-size: .72rem;
+    font-weight: 780;
+    text-transform: uppercase;
+    letter-spacing: .13em;
+  }
+  .model-nodes {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: .8rem;
+  }
+  .model-band-3 .model-nodes { grid-template-columns: .82fr 1.18fr; }
+  .model-node {
+    position: relative;
+    min-height: 58px;
+    padding: .55rem .25rem .4rem .85rem;
+    display: flex;
+    align-items: center;
+    border-left: 1px solid rgba(36,49,61,.22);
+  }
+  .model-node > span {
+    position: absolute;
+    left: -3px;
+    top: 50%;
+    width: 5px;
+    height: 5px;
+    translate: 0 -50%;
+    border-radius: 50%;
+    background: #587897;
+  }
+  .model-node strong {
+    font-size: .8125rem;
+    font-weight: 650;
+    line-height: 1.38;
+    letter-spacing: -.01em;
+  }
+  .model-transition {
+    position: relative;
+    z-index: 1;
+    min-height: 48px;
+    display: flex;
+    align-items: center;
+    color: #666a67;
+    font-size: .68rem;
+    font-weight: 750;
+    text-transform: uppercase;
+    letter-spacing: .13em;
+  }
+  .model-transition span { padding-left: 1rem; }
+  .model-transition::after {
+    content: "";
+    width: 6px;
+    height: 6px;
+    margin-left: .65rem;
+    border-right: 1px solid #9a6426;
+    border-bottom: 1px solid #9a6426;
+    rotate: 45deg;
+  }
+  .model-outcome {
+    position: relative;
+    z-index: 1;
+    min-height: 132px;
+    padding: 1.35rem 1.4rem 1.4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: visible;
+    border-radius: 3px;
+    color: #f0eee8;
+    background:
+      radial-gradient(circle at 90% 12%, rgba(75,126,182,.2), transparent 44%),
+      linear-gradient(145deg, #171b20, #121519);
+    box-shadow: 0 20px 42px rgba(20,24,29,.17), inset 0 1px rgba(255,255,255,.055);
+  }
+  .model-outcome-junction {
+    top: 1.35rem;
+    border-color: #d4cec2;
+    background: #e0a04f;
+    box-shadow: 0 0 0 4px rgba(224,160,79,.12), 0 0 18px rgba(224,160,79,.25);
+  }
+  .model-outcome > span:not(.model-outcome-junction) {
+    margin-bottom: .6rem;
+    color: #aeb3b8;
+    font-size: .7rem;
+    font-weight: 750;
+    text-transform: uppercase;
+    letter-spacing: .14em;
+  }
+  .model-outcome strong {
+    font-size: clamp(1.65rem, 6.5vw, 2.25rem);
+    font-weight: 470;
+    line-height: 1.05;
+    letter-spacing: -.04em;
+  }
+  .model-outcome p {
+    margin: .65rem 0 0;
+    color: #aeb3b8;
+    font-size: .85rem;
+    font-weight: 550;
+    letter-spacing: .025em;
+  }
+
+  .philosophy .principles {
+    margin-top: clamp(5rem, 13vw, 6.5rem);
+    display: block;
+    counter-reset: philosophy-principle;
+  }
+  .philosophy .principle,
+  .philosophy .principle + .principle {
+    position: relative;
+    padding: 2rem 0 2.15rem;
+    border-left: 0;
+    border-bottom: 1px solid rgba(0,0,0,.15);
+    counter-increment: philosophy-principle;
+  }
+  .philosophy .principle::before {
+    content: "0" counter(philosophy-principle);
+    display: block;
+    margin-bottom: 1rem;
+    color: #8b5b23;
+    font-size: .72rem;
+    font-weight: 750;
+    letter-spacing: .1em;
+  }
+  .philosophy .principle h3 {
+    margin: 0 0 .8rem;
+    font-size: 1.2rem;
+    line-height: 1.25;
+  }
+  .philosophy .principle p {
+    max-width: 620px;
+    margin: 0 0 .9rem;
+    color: #525653;
+    font-size: .975rem;
+    line-height: 1.72;
+  }
+  .philosophy .principle p:last-child { margin-bottom: 0; }
+}
+
+@media (max-width: 350px) {
+  .philosophy h2 { font-size: 2.3rem; }
+  .model-flow { padding-left: 1.15rem; }
+  .model-junction, .model-outcome-junction { left: -1.09rem; }
+  .model-nodes,
+  .model-band-3 .model-nodes { grid-template-columns: 1fr; gap: .2rem; }
+  .model-node { min-height: 46px; }
+  .model-outcome { min-height: 128px; padding: 1.25rem; }
 }
