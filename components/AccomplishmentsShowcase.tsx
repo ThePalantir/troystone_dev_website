@@ -19,6 +19,7 @@ export function AccomplishmentsShowcase() {
   const [hovered, setHovered] = useState(false);
   const [keyboardFocused, setKeyboardFocused] = useState(false);
   const [interactionPaused, setInteractionPaused] = useState(false);
+  const [interactionPauseVersion, setInteractionPauseVersion] = useState(0);
   const [userPaused, setUserPaused] = useState(false);
   const [pageVisible, setPageVisible] = useState(true);
 
@@ -77,9 +78,9 @@ export function AccomplishmentsShowcase() {
 
   useEffect(() => {
     if (!interactionPaused) return;
-    const resume = window.setTimeout(() => setInteractionPaused(false), visibleCount === 1 ? 16000 : 14000);
+    const resume = window.setTimeout(() => setInteractionPaused(false), 8000);
     return () => window.clearTimeout(resume);
-  }, [interactionPaused, visibleCount]);
+  }, [interactionPaused, interactionPauseVersion]);
 
   const scrollToIndex = useCallback((index: number, automatic = false) => {
     const next = Math.min(Math.max(index, 0), maxIndex);
@@ -91,7 +92,7 @@ export function AccomplishmentsShowcase() {
 
   useEffect(() => {
     if (reducedMotion || hovered || keyboardFocused || interactionPaused || userPaused || !pageVisible || !step) return;
-    const delay = visibleCount === 1 ? 12000 : 10000;
+    const delay = 5000;
     const timer = window.setTimeout(() => {
       let next = active + autoDirection.current;
       if (next > maxIndex) {
@@ -106,7 +107,10 @@ export function AccomplishmentsShowcase() {
     return () => window.clearTimeout(timer);
   }, [active, hovered, interactionPaused, keyboardFocused, maxIndex, pageVisible, reducedMotion, scrollToIndex, step, userPaused, visibleCount]);
 
-  const pauseAfterInteraction = () => setInteractionPaused(true);
+  const pauseAfterInteraction = () => {
+    setInteractionPaused(true);
+    setInteractionPauseVersion((version) => version + 1);
+  };
 
   const navigate = (direction: number) => {
     pauseAfterInteraction();
