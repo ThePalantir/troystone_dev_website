@@ -133,7 +133,7 @@ export default function Home() {
           </p>
 
           <h1>
-            Building intelligent systems that organizations <em>trust and deploy.</em>
+            Building intelligent systems organizations <em>trust and deploy.</em>
           </h1>
 
           <p className="hero-copy">

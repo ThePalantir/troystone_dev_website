@@ -156,7 +156,7 @@ footer > div a:hover { color: #fff; }
 [data-theme="light"] .theme-toggle { color: #34383d; background: rgba(0,0,0,.025); }
 [data-theme="light"] .theme-toggle:hover { color: #000; border-color: rgba(0,0,0,.3); background: rgba(0,0,0,.06); }
 [data-theme="light"] .hero-art { opacity: .84; }
-[data-theme="light"] .hero-shade { background: linear-gradient(90deg, rgba(244,241,233,.76) 0%, rgba(244,241,233,.46) 38%, rgba(244,241,233,.08) 72%, rgba(244,241,233,.01)), linear-gradient(0deg, rgba(244,241,233,.3) 0%, transparent 34%, rgba(244,241,233,.02)); }
+[data-theme="light"] .hero-shade { background: linear-gradient(90deg, rgba(244,241,233,.88) 0%, rgba(244,241,233,.76) 20%, rgba(244,241,233,.3) 36%, rgba(244,241,233,.04) 50%, transparent 60%), linear-gradient(0deg, rgba(244,241,233,.3) 0%, transparent 34%, rgba(244,241,233,.02)); }
 [data-theme="light"] .hero-grid { opacity: .2; background-image: linear-gradient(rgba(0,0,0,.08) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,.08) 1px, transparent 1px); }
 [data-theme="light"] .hero-eyebrow, [data-theme="light"] .hero-copy, [data-theme="light"] .text-link { color: #42474d; }
 [data-theme="light"] h1 em, [data-theme="light"] .contact h2 em { color: #5c6167; }
