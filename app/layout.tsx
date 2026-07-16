@@ -2,25 +2,37 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://troystone.dev"),
+  metadataBase: new URL("https://www.troystone.dev"),
   title: { default: "Troy Stone — Enterprise Systems Architect", template: "%s — Troy Stone" },
-  description: "Three decades building enterprise infrastructure, leading technology organizations, automating operations, and deploying intelligent systems.",
+  description: "Three decades building resilient enterprise infrastructure, leading technology organizations, automating operations, and deploying accountable intelligent systems.",
   keywords: ["Troy Stone", "enterprise architecture", "agentic AI", "Power Platform", "Microsoft 365", "enterprise automation"],
-  authors: [{ name: "Troy Stone", url: "https://troystone.dev" }], creator: "Troy Stone",
+  authors: [{ name: "Troy Stone", url: "https://www.troystone.dev" }], creator: "Troy Stone",
   alternates: { canonical: "/" },
-  icons: { icon: "/ts-initials.png", shortcut: "/ts-initials.png", apple: "/ts-initials.png" },
-  openGraph: { type: "website", locale: "en_US", url: "https://troystone.dev", siteName: "Troy Stone", title: "Troy Stone — Enterprise Systems Architect", description: "I build intelligent systems that organizations actually deploy.", images: [{ url: "/system-horizon.png", width: 1536, height: 864, alt: "An abstract intelligent systems landscape" }] },
-  twitter: { card: "summary_large_image", title: "Troy Stone — Enterprise Systems Architect", description: "I build intelligent systems that organizations actually deploy.", images: ["/system-horizon.png"] },
+  manifest: "/manifest.webmanifest",
+  icons: {
+    icon: [
+      { url: "/favicon.ico" },
+      { url: "/favicon-32x32.png", type: "image/png", sizes: "32x32" },
+      { url: "/favicon-16x16.png", type: "image/png", sizes: "16x16" },
+    ],
+    shortcut: "/favicon.ico",
+    apple: { url: "/apple-touch-icon.png", type: "image/png", sizes: "180x180" },
+  },
+  openGraph: { type: "website", locale: "en_US", url: "https://www.troystone.dev", siteName: "Troy Stone", title: "Troy Stone — Enterprise Systems Architect", description: "Building intelligent systems organizations trust and deploy.", images: [{ url: "/og-troy-stone.png", width: 1200, height: 630, alt: "Troy Stone, Enterprise Systems Architect — Building intelligent systems organizations trust and deploy." }] },
+  twitter: { card: "summary_large_image", title: "Troy Stone — Enterprise Systems Architect", description: "Building intelligent systems organizations trust and deploy.", images: ["/og-troy-stone.png"] },
   robots: { index: true, follow: true },
 };
 
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: "#08090a",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#f4f1e9" },
+    { media: "(prefers-color-scheme: dark)", color: "#08090a" },
+  ],
   colorScheme: "dark light",
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  return <html lang="en" suppressHydrationWarning><head><script dangerouslySetInnerHTML={{ __html: `(function(){try{var saved=localStorage.getItem('theme');var theme=saved==='light'||saved==='dark'?saved:'dark';document.documentElement.dataset.theme=theme;document.documentElement.style.colorScheme=theme;}catch(e){}})();` }} /></head><body>{children}</body></html>;
+  return <html lang="en" suppressHydrationWarning><head><script dangerouslySetInnerHTML={{ __html: `(function(){try{var saved=localStorage.getItem('theme');var theme=saved==='light'||saved==='dark'?saved:'dark';var root=document.documentElement;root.dataset.theme=theme;root.style.colorScheme=theme;var meta=document.createElement('meta');meta.name='theme-color';meta.dataset.siteTheme='true';meta.content=theme==='light'?'#f4f1e9':'#08090a';document.head.appendChild(meta);}catch(e){}})();` }} /></head><body>{children}</body></html>;
 }

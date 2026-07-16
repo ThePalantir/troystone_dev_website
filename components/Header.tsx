@@ -1,15 +1,19 @@
 "use client";
+
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ArrowUpRight, Menu, Moon, Sun, X } from "lucide-react";
 
-const links = [["Story", "#story"], ["Perspective", "#perspective"], ["Systems", "#systems"]];
+const links = [["Experience", "#story"], ["Point of view", "#perspective"], ["Systems", "#systems"]];
+const conversationUrl = "https://truecore.services/";
 type Theme = "light" | "dark";
 
 export function Header() {
   const [open, setOpen] = useState(false);
   const [theme, setTheme] = useState<Theme>("dark");
-  useEffect(() => { const close = () => setOpen(false); window.addEventListener("resize", close); return () => window.removeEventListener("resize", close); }, []);
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
+  const firstMobileLinkRef = useRef<HTMLAnchorElement>(null);
+
   useEffect(() => {
     const frame = window.requestAnimationFrame(() => {
       setTheme(document.documentElement.dataset.theme === "light" ? "light" : "dark");
@@ -17,10 +21,39 @@ export function Header() {
     return () => window.cancelAnimationFrame(frame);
   }, []);
 
+  useEffect(() => {
+    const desktop = window.matchMedia("(min-width: 901px)");
+    const closeAtDesktop = (event: MediaQueryListEvent) => {
+      if (event.matches) setOpen(false);
+    };
+    desktop.addEventListener("change", closeAtDesktop);
+    return () => desktop.removeEventListener("change", closeAtDesktop);
+  }, []);
+
+  useEffect(() => {
+    if (!open) return;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    const frame = window.requestAnimationFrame(() => firstMobileLinkRef.current?.focus());
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setOpen(false);
+        menuButtonRef.current?.focus();
+      }
+    };
+    document.addEventListener("keydown", handleKeyDown);
+    return () => {
+      window.cancelAnimationFrame(frame);
+      document.body.style.overflow = previousOverflow;
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [open]);
+
   const toggleTheme = () => {
     const next = theme === "dark" ? "light" : "dark";
     document.documentElement.dataset.theme = next;
     document.documentElement.style.colorScheme = next;
+    document.querySelector<HTMLMetaElement>('meta[data-site-theme="true"]')?.setAttribute("content", next === "light" ? "#f4f1e9" : "#08090a");
     window.localStorage.setItem("theme", next);
     setTheme(next);
   };
@@ -33,9 +66,12 @@ export function Header() {
         {theme === "dark" ? <Sun size={15} /> : <Moon size={15} />}
         <span>{theme === "dark" ? "Light mode" : "Dark mode"}</span>
       </button>
-      <a className="nav-cta" href="#contact">Start a conversation <ArrowUpRight size={15} /></a>
+      <a className="nav-cta" href={conversationUrl} target="_blank" rel="noreferrer">Start a conversation <ArrowUpRight size={15} /></a>
     </div>
-    <button className="menu-button" type="button" onClick={() => setOpen(!open)} aria-label={open ? "Close menu" : "Open menu"} aria-expanded={open}>{open ? <X /> : <Menu />}</button>
-    {open && <nav className="mobile-nav" aria-label="Mobile navigation">{links.map(([label, href]) => <a key={href} href={href} onClick={() => setOpen(false)}>{label}</a>)}<a href="#contact" onClick={() => setOpen(false)}>Start a conversation</a></nav>}
+    <button ref={menuButtonRef} className="menu-button" type="button" onClick={() => setOpen((value) => !value)} aria-label={open ? "Close menu" : "Open menu"} aria-expanded={open} aria-controls="mobile-navigation">{open ? <X /> : <Menu />}</button>
+    <nav id="mobile-navigation" className={open ? "mobile-nav is-open" : "mobile-nav"} aria-label="Mobile navigation" aria-hidden={!open} inert={!open}>
+      {links.map(([label, href], index) => <a ref={index === 0 ? firstMobileLinkRef : undefined} key={href} href={href} onClick={() => setOpen(false)}>{label}</a>)}
+      <a href={conversationUrl} target="_blank" rel="noreferrer" onClick={() => setOpen(false)}>Start a conversation <ArrowUpRight size={16} /></a>
+    </nav>
   </header>;
 }
