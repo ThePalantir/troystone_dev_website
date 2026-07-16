@@ -8,6 +8,7 @@ export const metadata: Metadata = {
   keywords: ["Troy Stone", "enterprise architecture", "agentic AI", "Power Platform", "Microsoft 365", "enterprise automation"],
   authors: [{ name: "Troy Stone", url: "https://troystone.dev" }], creator: "Troy Stone",
   alternates: { canonical: "/" },
+  icons: { icon: "/ts-initials.png", shortcut: "/ts-initials.png", apple: "/ts-initials.png" },
   openGraph: { type: "website", locale: "en_US", url: "https://troystone.dev", siteName: "Troy Stone", title: "Troy Stone — Enterprise Systems Architect", description: "I build intelligent systems that organizations actually deploy.", images: [{ url: "/system-horizon.png", width: 1536, height: 864, alt: "An abstract intelligent systems landscape" }] },
   twitter: { card: "summary_large_image", title: "Troy Stone — Enterprise Systems Architect", description: "I build intelligent systems that organizations actually deploy.", images: ["/system-horizon.png"] },
   robots: { index: true, follow: true },
