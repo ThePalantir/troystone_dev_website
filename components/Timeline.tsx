@@ -23,6 +23,21 @@ export function Timeline() {
     if (track) {
       track.scrollTo({ left: button.offsetLeft + button.offsetWidth / 2 - track.clientWidth / 2, behavior: reduced ? "auto" : "smooth" });
     }
+
+    window.requestAnimationFrame(() => {
+      const shell = shellRef.current;
+      if (!shell) return;
+
+      const expectedTop = window.matchMedia("(max-width: 640px)").matches ? 80 : 96;
+      const currentTop = shell.getBoundingClientRect().top;
+      if (Math.abs(currentTop - expectedTop) <= 20) return;
+
+      shell.scrollIntoView({
+        behavior: reduced ? "auto" : "smooth",
+        block: "start",
+        inline: "nearest",
+      });
+    });
   };
 
   const handleKeyDown = (event: KeyboardEvent<HTMLButtonElement>, index: number) => {

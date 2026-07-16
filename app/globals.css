@@ -331,6 +331,7 @@ main[id], main > section[id] { scroll-margin-top: 92px; }
 
 @media (max-width: 640px) {
   main[id], main > section[id] { scroll-margin-top: 72px; }
+  .timeline-shell { scroll-margin-top: 80px; }
   .hero { min-height: 100svh; padding-top: 64px; }
   .hero-content { padding: 3.75rem 1.25rem 2.5rem; }
   .hero-copy { font-size: 1rem; line-height: 1.65; }
