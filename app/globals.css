@@ -696,16 +696,8 @@ p { text-wrap: pretty; }
     box-shadow: 0 0 0 3px rgba(154,100,38,.1);
   }
   .model-band-heading {
-    display: flex;
-    align-items: baseline;
-    gap: .65rem;
-    margin-bottom: 1rem;
-  }
-  .model-band-heading span {
-    color: #915d22;
-    font-size: .7rem;
-    font-weight: 800;
-    letter-spacing: .08em;
+    margin: 0 0 .9rem;
+    padding-left: .85rem;
   }
   .model-band-heading strong {
     color: #555a57;

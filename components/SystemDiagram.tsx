@@ -5,9 +5,9 @@ import { motion, useReducedMotion } from "motion/react";
 const diagramDescription = "Diagram showing business context, architecture, guardrails, automation, human judgment, observability, and auditability flowing into useful intelligence";
 
 const mobileBands = [
-  { index: "01", title: "Foundation", conditions: ["Business context", "Architecture"] },
-  { index: "02", title: "Operation", conditions: ["Automation", "Guardrails"] },
-  { index: "03", title: "Accountability", conditions: ["Human judgment", "Observability / Auditability"] },
+  { title: "Foundation", conditions: ["Business context", "Architecture"] },
+  { title: "Operation", conditions: ["Automation", "Guardrails"] },
+  { title: "Accountability", conditions: ["Human judgment", "Observability / Auditability"] },
 ];
 
 export function SystemDiagram() {
@@ -39,10 +39,10 @@ export function SystemDiagram() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={viewport}
           transition={{ duration: .65, delay: index * .18, ease: [0.22, 1, 0.36, 1] }}
-          key={band.index}
+          key={band.title}
         >
           <span className="model-junction" />
-          <div className="model-band-heading"><span>{band.index}</span><strong>{band.title}</strong></div>
+          <div className="model-band-heading"><strong>{band.title}</strong></div>
           <div className="model-nodes">
             {band.conditions.map((condition) => <div className="model-node" key={condition}><span /><strong>{condition}</strong></div>)}
           </div>
