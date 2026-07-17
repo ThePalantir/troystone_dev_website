@@ -805,24 +805,13 @@ p { text-wrap: pretty; }
   .philosophy .principles {
     margin-top: clamp(5rem, 13vw, 6.5rem);
     display: block;
-    counter-reset: philosophy-principle;
   }
   .philosophy .principle,
   .philosophy .principle + .principle {
     position: relative;
-    padding: 2rem 0 2.15rem;
+    padding: 1.75rem 0 2.15rem;
     border-left: 0;
     border-bottom: 1px solid rgba(0,0,0,.15);
-    counter-increment: philosophy-principle;
-  }
-  .philosophy .principle::before {
-    content: "0" counter(philosophy-principle);
-    display: block;
-    margin-bottom: 1rem;
-    color: #8b5b23;
-    font-size: .72rem;
-    font-weight: 750;
-    letter-spacing: .1em;
   }
   .philosophy .principle h3 {
     margin: 0 0 .8rem;
