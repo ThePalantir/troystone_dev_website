@@ -5,8 +5,8 @@ export interface CapabilityCard {
   problem: string;
   architecture: string;
   scale: string;
-  result: string;
-  businessOutcome: string;
+  operationalResult: string;
+  businessValue: string;
 }
 
 export const capabilityCards: CapabilityCard[] = [
@@ -19,8 +19,10 @@ export const capabilityCards: CapabilityCard[] = [
     architecture:
       "Microsoft Entra, Microsoft Graph, Power Platform, governed workflows, and event-driven automation.",
     scale: "Cross-functional lifecycle spanning HR, identity, security, managers, and service owners.",
-    result: "A governed operating path from hire through role change to departure.",
-    businessOutcome: "Faster readiness, fewer handoffs, and more reliable access control.",
+    operationalResult:
+      "Reduced account-creation time from approximately 2.5 weeks to one day while eliminating multiple systems, manual handoffs, and common sources of human error from the onboarding process.",
+    businessValue:
+      "New employees received access sooner, onboarding became more predictable, and identity provisioning became more consistent and auditable.",
   },
   {
     id: "decision-system",
@@ -31,8 +33,10 @@ export const capabilityCards: CapabilityCard[] = [
     architecture:
       "Connected operational sources, normalized measures, exception logic, and decision-focused reporting.",
     scale: "Enterprise portfolio spanning multiple systems, owners, and operating measures.",
-    result: "A concise view of material variance, risk, and performance.",
-    businessOutcome: "Less time reconciling reports; faster, better-grounded decisions.",
+    operationalResult:
+      "Consolidated fragmented operational reporting into decision-focused views of material exceptions, performance variance, and emerging risk.",
+    businessValue:
+      "Reduced the time leaders spent reconciling reports and allowed attention to shift sooner toward the issues requiring action, with the level of impact varying by solution.",
   },
   {
     id: "intelligent-system",
@@ -43,7 +47,9 @@ export const capabilityCards: CapabilityCard[] = [
     architecture:
       "Specialized agents, trusted tools, bounded actions, human judgment, and end-to-end observability.",
     scale: "Production workflow pattern designed to extend across governed enterprise processes.",
-    result: "Intelligence embedded inside the operating system rather than beside it.",
-    businessOutcome: "More capable execution without surrendering control or auditability.",
+    operationalResult:
+      "Automated research, data enrichment, deduplication, analysis, and content generation while preserving human review at consequential decision points.",
+    businessValue:
+      "Reduced work that previously required approximately 12 hours to minutes, shortened refresh cycles, and created a reusable pattern for introducing AI into governed enterprise workflows.",
   },
 ];
