@@ -108,12 +108,12 @@ export function Header() {
         {theme === "dark" ? <Sun size={15} /> : <Moon size={15} />}
         <span>Change theme</span>
       </button>
-      <a className="nav-cta" href={conversationUrl} target="_blank" rel="noreferrer">Start a conversation <ArrowUpRight size={15} /></a>
+      <a className="nav-cta" href={conversationUrl} target="_blank" rel="noreferrer"><span className="truecore-cta-copy">Connect with Troy and Jesse at <span className="truecore-name"><Image className="truecore-logo" src="/truecore-logo.png" alt="" width={24} height={18} />TrueCore</span></span> <ArrowUpRight size={15} /></a>
     </div>
     <button ref={menuButtonRef} className="menu-button" type="button" onClick={() => setOpen((value) => !value)} aria-label={open ? "Close menu" : "Open menu"} aria-expanded={open} aria-controls="mobile-navigation">{open ? <X /> : <Menu />}</button>
     <nav id="mobile-navigation" className={open ? "mobile-nav is-open" : "mobile-nav"} aria-label="Mobile navigation" aria-hidden={!open} inert={!open}>
       {links.map(([label, href], index) => <Link ref={index === 0 ? firstMobileLinkRef : undefined} key={href} href={href} onClick={() => setOpen(false)}>{label}</Link>)}
-      <a href={conversationUrl} target="_blank" rel="noreferrer" onClick={() => setOpen(false)}>Start a conversation <ArrowUpRight size={16} /></a>
+      <a href={conversationUrl} target="_blank" rel="noreferrer" onClick={() => setOpen(false)}><span className="truecore-cta-copy">Connect with Troy and Jesse at <span className="truecore-name"><Image className="truecore-logo" src="/truecore-logo.png" alt="" width={24} height={18} />TrueCore</span></span> <ArrowUpRight size={16} /></a>
     </nav>
   </header>;
 }
