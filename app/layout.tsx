@@ -26,13 +26,10 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#f4f1e9" },
-    { media: "(prefers-color-scheme: dark)", color: "#08090a" },
-  ],
-  colorScheme: "dark light",
 };
 
+const themeInitializationScript = `(function(){var theme='dark';try{var saved=localStorage.getItem('theme');if(saved==='light'||saved==='dark')theme=saved;}catch(e){}var root=document.documentElement;root.dataset.theme=theme;root.style.colorScheme=theme;var meta=document.querySelector('meta[data-site-theme="true"]');if(meta)meta.content=theme==='light'?'#f4f1e9':'#08090a';})();`;
+
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  return <html lang="en" suppressHydrationWarning><head><script dangerouslySetInnerHTML={{ __html: `(function(){try{var saved=localStorage.getItem('theme');var theme=saved==='light'||saved==='dark'?saved:'dark';var root=document.documentElement;root.dataset.theme=theme;root.style.colorScheme=theme;var meta=document.createElement('meta');meta.name='theme-color';meta.dataset.siteTheme='true';meta.content=theme==='light'?'#f4f1e9':'#08090a';document.head.appendChild(meta);}catch(e){}})();` }} /></head><body>{children}</body></html>;
+  return <html lang="en" data-theme="dark" style={{ colorScheme: "dark" }} suppressHydrationWarning><head><meta name="theme-color" content="#08090a" data-site-theme="true" /><script dangerouslySetInnerHTML={{ __html: themeInitializationScript }} /></head><body>{children}</body></html>;
 }

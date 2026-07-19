@@ -1,12 +1,32 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { ArrowUpRight, Menu, Moon, Sun, X } from "lucide-react";
 
 const links = [["Experience", "#story"], ["Point of view", "#perspective"], ["Systems", "#systems"]];
 const conversationUrl = "https://truecore.services/";
 type Theme = "light" | "dark";
+
+function getRootTheme(): Theme {
+  return document.documentElement.dataset.theme === "light" ? "light" : "dark";
+}
+
+function getSavedTheme(): Theme {
+  try {
+    const saved = window.localStorage.getItem("theme");
+    return saved === "light" || saved === "dark" ? saved : "dark";
+  } catch {
+    return "dark";
+  }
+}
+
+function applyTheme(theme: Theme) {
+  const root = document.documentElement;
+  root.dataset.theme = theme;
+  root.style.colorScheme = theme;
+  document.querySelector<HTMLMetaElement>('meta[data-site-theme="true"]')?.setAttribute("content", theme === "light" ? "#f4f1e9" : "#08090a");
+}
 
 export function Header() {
   const [open, setOpen] = useState(false);
@@ -14,11 +34,30 @@ export function Header() {
   const menuButtonRef = useRef<HTMLButtonElement>(null);
   const firstMobileLinkRef = useRef<HTMLAnchorElement>(null);
 
-  useEffect(() => {
-    const frame = window.requestAnimationFrame(() => {
-      setTheme(document.documentElement.dataset.theme === "light" ? "light" : "dark");
-    });
-    return () => window.cancelAnimationFrame(frame);
+  useLayoutEffect(() => {
+    const syncFromRoot = () => setTheme(getRootTheme());
+    const restoreSavedTheme = () => {
+      const saved = getSavedTheme();
+      applyTheme(saved);
+      setTheme(saved);
+    };
+    const handleStorage = (event: StorageEvent) => {
+      if (event.key !== "theme") return;
+      const saved = event.newValue === "light" || event.newValue === "dark" ? event.newValue : "dark";
+      applyTheme(saved);
+      setTheme(saved);
+    };
+    const observer = new MutationObserver(syncFromRoot);
+
+    syncFromRoot();
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
+    window.addEventListener("pageshow", restoreSavedTheme);
+    window.addEventListener("storage", handleStorage);
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("pageshow", restoreSavedTheme);
+      window.removeEventListener("storage", handleStorage);
+    };
   }, []);
 
   useEffect(() => {
@@ -50,11 +89,13 @@ export function Header() {
   }, [open]);
 
   const toggleTheme = () => {
-    const next = theme === "dark" ? "light" : "dark";
-    document.documentElement.dataset.theme = next;
-    document.documentElement.style.colorScheme = next;
-    document.querySelector<HTMLMetaElement>('meta[data-site-theme="true"]')?.setAttribute("content", next === "light" ? "#f4f1e9" : "#08090a");
-    window.localStorage.setItem("theme", next);
+    const next = getRootTheme() === "dark" ? "light" : "dark";
+    applyTheme(next);
+    try {
+      window.localStorage.setItem("theme", next);
+    } catch {
+      // The selected theme still applies for this page when storage is unavailable.
+    }
     setTheme(next);
   };
 
@@ -62,9 +103,9 @@ export function Header() {
     <a className="wordmark" href="#top" aria-label="Troy Stone, home"><Image className="brand-mark" src="/ts-initials.png" alt="" width={58} height={44} priority /></a>
     <nav className="desktop-nav" aria-label="Primary navigation">{links.map(([label, href]) => <a key={href} href={href}>{label}</a>)}</nav>
     <div className="header-actions">
-      <button className="theme-toggle" type="button" onClick={toggleTheme} aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}>
+      <button className="theme-toggle" type="button" onClick={toggleTheme} aria-label={`Change theme to ${theme === "dark" ? "light" : "dark"}`}>
         {theme === "dark" ? <Sun size={15} /> : <Moon size={15} />}
-        <span>{theme === "dark" ? "Light mode" : "Dark mode"}</span>
+        <span>Change theme</span>
       </button>
       <a className="nav-cta" href={conversationUrl} target="_blank" rel="noreferrer">Start a conversation <ArrowUpRight size={15} /></a>
     </div>
