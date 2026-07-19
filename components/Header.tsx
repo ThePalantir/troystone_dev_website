@@ -1,10 +1,11 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { ArrowUpRight, Menu, Moon, Sun, X } from "lucide-react";
 
-const links = [["Experience", "#story"], ["Point of view", "#perspective"], ["Systems", "#systems"]];
+const links = [["Experience", "/#story"], ["Point of view", "/#perspective"], ["Systems", "/#systems"], ["Glossary", "/glossary"]];
 const conversationUrl = "https://truecore.services/";
 type Theme = "light" | "dark";
 
@@ -100,8 +101,8 @@ export function Header() {
   };
 
   return <header className="site-header">
-    <a className="wordmark" href="#top" aria-label="Troy Stone, home"><Image className="brand-mark" src="/ts-initials.png" alt="" width={58} height={44} priority /></a>
-    <nav className="desktop-nav" aria-label="Primary navigation">{links.map(([label, href]) => <a key={href} href={href}>{label}</a>)}</nav>
+    <Link className="wordmark" href="/" aria-label="Troy Stone, home"><Image className="brand-mark" src="/ts-initials.png" alt="" width={58} height={44} priority /></Link>
+    <nav className="desktop-nav" aria-label="Primary navigation">{links.map(([label, href]) => <Link key={href} href={href}>{label}</Link>)}</nav>
     <div className="header-actions">
       <button className="theme-toggle" type="button" onClick={toggleTheme} aria-label={`Change theme to ${theme === "dark" ? "light" : "dark"}`}>
         {theme === "dark" ? <Sun size={15} /> : <Moon size={15} />}
@@ -111,7 +112,7 @@ export function Header() {
     </div>
     <button ref={menuButtonRef} className="menu-button" type="button" onClick={() => setOpen((value) => !value)} aria-label={open ? "Close menu" : "Open menu"} aria-expanded={open} aria-controls="mobile-navigation">{open ? <X /> : <Menu />}</button>
     <nav id="mobile-navigation" className={open ? "mobile-nav is-open" : "mobile-nav"} aria-label="Mobile navigation" aria-hidden={!open} inert={!open}>
-      {links.map(([label, href], index) => <a ref={index === 0 ? firstMobileLinkRef : undefined} key={href} href={href} onClick={() => setOpen(false)}>{label}</a>)}
+      {links.map(([label, href], index) => <Link ref={index === 0 ? firstMobileLinkRef : undefined} key={href} href={href} onClick={() => setOpen(false)}>{label}</Link>)}
       <a href={conversationUrl} target="_blank" rel="noreferrer" onClick={() => setOpen(false)}>Start a conversation <ArrowUpRight size={16} /></a>
     </nav>
   </header>;

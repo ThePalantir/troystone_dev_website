@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { ArrowDown, ArrowRight, ArrowUpRight, Braces, Network, Workflow } from "lucide-react";
 import { Header } from "@/components/Header";
 import { Reveal } from "@/components/Reveal";
@@ -6,6 +7,8 @@ import { SystemDiagram } from "@/components/SystemDiagram";
 import { Timeline } from "@/components/Timeline";
 import { capabilityCards } from "@/data/capabilityCards";
 import { AccomplishmentsShowcase } from "@/components/AccomplishmentsShowcase";
+import { SiteFooter } from "@/components/SiteFooter";
+import { getGlossaryHref } from "@/data/glossary";
 
 const chapters = [
   {
@@ -188,7 +191,7 @@ export default function Home() {
 
       <section className="timeline-section section" id="story" aria-labelledby="timeline-title"><Reveal className="section-kicker"><span>Three decades, one practice</span></Reveal><Reveal className="timeline-heading"><div><p className="eyebrow">From infrastructure to accountable intelligence</p><h2 id="timeline-title">Every era builds<br />on the one before it.</h2></div><p>Explore how each generation of technology expanded the scale, responsibility, and operating discipline of the work.</p></Reveal><Reveal><Timeline /></Reveal></section>
 
-      <section className="chapters section" aria-labelledby="chapters-title"><Reveal className="section-kicker"><span>The enterprise system</span></Reveal><h2 id="chapters-title" className="sr-only">Six connected layers of enterprise technology</h2>{chapters.map((chapter) => <Reveal className="chapter" key={chapter.index}><div className="chapter-meta"><span>{chapter.era}</span></div><div className="chapter-copy"><h3>{chapter.title}</h3><p>{chapter.copy}</p><div className="tag-row">{chapter.tags.map((tag) => <span key={tag}>{tag}</span>)}</div></div></Reveal>)}</section>
+      <section className="chapters section" aria-labelledby="chapters-title"><Reveal className="section-kicker"><span>The enterprise system</span></Reveal><h2 id="chapters-title" className="sr-only">Six connected layers of enterprise technology</h2>{chapters.map((chapter) => <Reveal className="chapter" key={chapter.index}><div className="chapter-meta"><span>{chapter.era}</span></div><div className="chapter-copy"><h3>{chapter.title}</h3><p>{chapter.copy}</p><div className="tag-row">{chapter.tags.map((tag) => <Link href={getGlossaryHref(tag)} aria-label={`Read the glossary definition for ${tag}`} key={tag}>{tag}</Link>)}</div></div></Reveal>)}</section>
 
       <section className="philosophy section" id="perspective" aria-labelledby="philosophy-title"><Reveal className="section-kicker"><span>Point of view</span></Reveal><div className="philosophy-grid"><Reveal className="philosophy-content"><p className="eyebrow">The practical AI thesis</p><h2 id="philosophy-title">Intelligence is a layer—not an application or a model.<br />The system is the product.</h2><p className="philosophy-copy">A useful AI system knows what it may access, which actions it may take, when a person must decide, and how every action becomes observable. Without guardrails, intelligence is risk. Without auditability, it is difficult to trust. The model matters. The surrounding architecture matters more.</p></Reveal><Reveal className="philosophy-visual" delay={0.1}><SystemDiagram /></Reveal></div><div className="principles">{principles.map((principle, i) => <Reveal className="principle" delay={i * 0.06} key={principle.title}><h3>{principle.title}</h3>{principle.copy.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}</Reveal>)}</div></section>
 
@@ -198,7 +201,7 @@ export default function Home() {
 
       <section className="contact section" id="contact" aria-labelledby="contact-title"><Reveal><p className="eyebrow"><span className="status-dot" /> Complex systems. Meaningful outcomes.</p><h2 id="contact-title">Let&apos;s turn complexity into<br /><em>clarity.</em></h2><p>If you&apos;re modernizing a critical system, connecting AI to operations, or working through a consequential technology decision, I&apos;d welcome the conversation.</p><a className="button button-primary contact-button" href="https://truecore.services/" target="_blank" rel="noreferrer">Start a conversation <ArrowUpRight size={17} /></a></Reveal></section>
     </main>
-    <footer><a className="wordmark" href="#top" aria-label="Troy Stone, back to top"><Image className="brand-mark" src="/ts-initials.png" alt="" width={64} height={48} /></a><p>Enterprise architecture · Technology leadership · Accountable AI</p><div className="footer-links"><span className="built-by"><strong>Built by</strong> <a className="truecore-link" href="https://truecore.services/" target="_blank" rel="noreferrer"><Image className="truecore-logo" src="/truecore-logo.png" alt="" width={24} height={18} /><strong>truecore.services</strong></a></span><a className="linkedin-link" href="https://www.linkedin.com/in/troystone" aria-label="LinkedIn">in</a></div></footer>
+    <SiteFooter />
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }} />
   </>;
 }
