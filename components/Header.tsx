@@ -108,7 +108,7 @@ export function Header() {
         {theme === "dark" ? <Sun size={15} /> : <Moon size={15} />}
         <span>Change theme</span>
       </button>
-      <a className="nav-cta" href={conversationUrl} target="_blank" rel="noreferrer"><span className="truecore-cta-copy">Connect with Troy and Jesse at <span className="truecore-name"><Image className="truecore-logo" src="/truecore-logo.png" alt="" width={24} height={18} />TrueCore</span></span> <ArrowUpRight size={15} /></a>
+      <a className="nav-cta" href={conversationUrl} target="_blank" rel="noreferrer"><span className="truecore-desktop-cta"><span>Connect with Troy and Jesse</span><span className="truecore-desktop-cta-line">at <span className="truecore-name"><Image className="truecore-logo" src="/truecore-logo.png" alt="" width={24} height={18} />TrueCore</span> <ArrowUpRight size={15} /></span></span></a>
     </div>
     <button ref={menuButtonRef} className="menu-button" type="button" onClick={() => setOpen((value) => !value)} aria-label={open ? "Close menu" : "Open menu"} aria-expanded={open} aria-controls="mobile-navigation">{open ? <X /> : <Menu />}</button>
     <nav id="mobile-navigation" className={open ? "mobile-nav is-open" : "mobile-nav"} aria-label="Mobile navigation" aria-hidden={!open} inert={!open}>

@@ -150,7 +150,9 @@ h1 em, .contact h2 em { color: #afb2b7; font-family: Georgia, "Times New Roman",
 .truecore-cta-copy { min-width: 0; line-height: 1.35; }
 .truecore-name { display: inline-flex; align-items: center; gap: .28rem; white-space: nowrap; }
 .truecore-name .truecore-logo { flex: 0 0 auto; }
-.nav-cta .truecore-cta-copy { max-width: 190px; text-align: right; }
+.truecore-desktop-cta { display: grid; justify-items: center; gap: .12rem; line-height: 1.2; text-align: center; }
+.truecore-desktop-cta-line { display: inline-flex; align-items: center; gap: .28rem; white-space: nowrap; }
+.truecore-desktop-cta-line > svg { flex: 0 0 auto; }
 .nav-cta > svg,
 .mobile-nav a > svg,
 .contact-button > svg { flex: 0 0 auto; }
