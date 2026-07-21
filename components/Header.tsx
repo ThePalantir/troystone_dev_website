@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { ArrowUpRight, Menu, Moon, Sun, X } from "lucide-react";
 
-const links = [["Experience", "/#story"], ["Point of view", "/#perspective"], ["Systems", "/#systems"], ["Glossary", "/glossary"]];
+const links = [["What I Do", "/#what-i-do"], ["Case Studies", "/#case-studies"], ["Experience", "/#experience"], ["About", "/#about"], ["Contact", "/#contact"], ["Glossary", "/glossary"]];
 const conversationUrl = "https://truecore.services/";
 type Theme = "light" | "dark";
 

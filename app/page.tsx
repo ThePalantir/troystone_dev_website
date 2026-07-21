@@ -1,13 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowDown, ArrowRight, ArrowUpRight, Braces, Network, Workflow } from "lucide-react";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { Header } from "@/components/Header";
 import { Reveal } from "@/components/Reveal";
 import { SystemDiagram } from "@/components/SystemDiagram";
 import { Timeline } from "@/components/Timeline";
-import { capabilityCards } from "@/data/capabilityCards";
-import { AccomplishmentsShowcase } from "@/components/AccomplishmentsShowcase";
 import { SiteFooter } from "@/components/SiteFooter";
+import { BusinessOutcomes, EvidenceAndResults, ExpertiseAreas, SelectedCaseStudies } from "@/components/ValueSections";
 import { getGlossaryHref } from "@/data/glossary";
 
 const chapters = [
@@ -85,12 +84,6 @@ const chapters = [
   },
 ];
 
-const capabilityIcons: Record<string, typeof Workflow> = {
-  "operating-system": Workflow,
-  "decision-system": Network,
-  "intelligent-system": Braces,
-};
-
 const principles = [
   {
     title: "Understand the system",
@@ -114,7 +107,7 @@ const principles = [
 ];
 
 export default function Home() {
-  const jsonLd = { "@context": "https://schema.org", "@type": "Person", name: "Troy Stone", url: "https://www.troystone.dev", jobTitle: "Enterprise Systems Architect", sameAs: ["https://www.linkedin.com/in/troystone"], knowsAbout: ["Enterprise Architecture", "Power Platform", "Microsoft Graph", "Automation", "Agentic AI"] };
+  const jsonLd = { "@context": "https://schema.org", "@type": "Person", name: "Troy Stone", url: "https://www.troystone.dev", jobTitle: "Technology Executive and Enterprise Systems Architect", sameAs: ["https://www.linkedin.com/in/troystone"], knowsAbout: ["Technology Leadership", "Enterprise Architecture", "Systems Integration", "Automation", "Accountable AI"] };
   return <>
     <a className="skip-link" href="#main">Skip to content</a><Header />
     <main id="main">
@@ -133,25 +126,24 @@ export default function Home() {
         <div className="hero-content">
           <p className="eyebrow hero-eyebrow">
             <span />
-            Technology strategist · Systems architect
+            Technology leadership · Automation · AI
           </p>
 
           <h1>
-            Building intelligent systems organizations <em>trust and deploy.</em>
+            Technology leadership that moves the <em>business forward.</em>
           </h1>
 
           <p className="hero-copy">
-            Three decades spanning carrier-grade infrastructure, enterprise
-            applications, executive leadership, automation, and accountable AI.
+            I help organizations with complex operations reduce costs, eliminate repetitive work, improve efficiency, and connect disconnected systems. Whether leading at the CIO or VP level or building automation and AI solutions hands-on, I focus on practical technology that produces measurable business results.
           </p>
 
           <div className="hero-actions">
-            <a className="button button-primary" href="#story">
-              Trace the work
-              <ArrowDown size={16} />
+            <a className="button button-primary" href="#case-studies">
+              View my work
+              <ArrowRight size={16} />
             </a>
-            <a className="text-link" href="#systems">
-              Explore selected systems
+            <a className="text-link" href="#contact">
+              Discuss an opportunity
               <ArrowRight size={16} />
             </a>
           </div>
@@ -159,45 +151,40 @@ export default function Home() {
 
         <div className="hero-proof" aria-label="Experience summary">
           <div>
-            <strong>30+</strong>
+            <strong>Lead</strong>
             <span>
-              Years building
-              <br />
-              through change
+              Strategy, teams,<br />and accountability
             </span>
           </div>
 
           <div>
-            <strong>6</strong>
+            <strong>Build</strong>
             <span>
-              Enterprise
-              <br />
-              system layers
+              Architecture,<br />applications, and automation
             </span>
           </div>
 
           <div>
-            <strong>1</strong>
+            <strong>Deliver</strong>
             <span>
-              Constant:
-              <br />
-              useful outcomes
+              Practical outcomes<br />the business can measure
             </span>
           </div>
         </div>
       </section>
 
-      <section className="manifesto section" aria-labelledby="mission-title"><Reveal className="section-kicker"><span>Operating principle</span></Reveal><Reveal><h2 id="mission-title" className="display-copy">Technology changes.<br /><span>Building what lasts does not.</span></h2></Reveal><div className="manifesto-grid"><Reveal className="manifesto-lead"><p>The tools change. The hard parts endure.</p></Reveal><Reveal className="manifesto-body" delay={0.08}><p>Understand the organization. Turn complexity into clarity. Design for real constraints. Build reliable systems that can evolve with the business.</p><p>The technologies and responsibilities changed. The operating discipline did not.</p></Reveal></div></section>
+      <BusinessOutcomes />
+      <ExpertiseAreas />
+      <EvidenceAndResults />
+      <SelectedCaseStudies />
 
-      <section className="timeline-section section" id="story" aria-labelledby="timeline-title"><Reveal className="section-kicker"><span>Three decades, one practice</span></Reveal><Reveal className="timeline-heading"><div><p className="eyebrow">From infrastructure to accountable intelligence</p><h2 id="timeline-title">Every era builds<br />on the one before it.</h2></div><p>Explore how each generation of technology expanded the scale, responsibility, and operating discipline of the work.</p></Reveal><Reveal><Timeline /></Reveal></section>
+      <section className="timeline-section section" id="experience" aria-labelledby="timeline-title"><Reveal className="section-kicker"><span>Professional journey</span></Reveal><Reveal className="timeline-heading"><div><p className="eyebrow">A technology leader who still builds</p><h2 id="timeline-title">Leadership and execution.<br />One practice.</h2></div><p>Three decades across infrastructure, applications, data, executive responsibility, automation, and AI shaped how I solve business problems today.</p></Reveal><Reveal><Timeline /></Reveal></section>
 
-      <section className="chapters section" aria-labelledby="chapters-title"><Reveal className="section-kicker"><span>The enterprise system</span></Reveal><h2 id="chapters-title" className="sr-only">Six connected layers of enterprise technology</h2>{chapters.map((chapter) => <Reveal className="chapter" key={chapter.index}><div className="chapter-meta"><span>{chapter.era}</span></div><div className="chapter-copy"><h3>{chapter.title}</h3><p>{chapter.copy}</p><div className="tag-row">{chapter.tags.map((tag) => <Link href={getGlossaryHref(tag)} aria-label={`Read the glossary definition for ${tag}`} key={tag}>{tag}</Link>)}</div></div></Reveal>)}</section>
+      <section className="chapters section" aria-labelledby="chapters-title"><Reveal className="section-kicker"><span>The enterprise system</span></Reveal><h2 id="chapters-title" className="sr-only">Six connected layers of enterprise technology</h2>{chapters.map((chapter) => <Reveal className="chapter" key={chapter.index}><div className="chapter-meta"><span>{chapter.era}</span></div><div className="chapter-copy"><h3>{chapter.title}</h3><p>{chapter.copy}</p><div className="tag-row">{chapter.tags.map((tag) => <Link href={getGlossaryHref(tag)} aria-label={`Read the glossary definition for ${tag}`} key={tag}>{tag}</Link>)}</div></div></Reveal>)}<Reveal className="journey-next"><a className="section-link" href="#about">How that experience shapes the work today <ArrowRight size={15} /></a></Reveal></section>
 
-      <section className="philosophy section" id="perspective" aria-labelledby="philosophy-title"><Reveal className="section-kicker"><span>Point of view</span></Reveal><div className="philosophy-grid"><Reveal className="philosophy-content"><p className="eyebrow">The practical AI thesis</p><h2 id="philosophy-title">Intelligence is a layer—not an application or a model.<br />The system is the product.</h2><p className="philosophy-copy">A useful AI system knows what it may access, which actions it may take, when a person must decide, and how every action becomes observable. Without guardrails, intelligence is risk. Without auditability, it is difficult to trust. The model matters. The surrounding architecture matters more.</p></Reveal><Reveal className="philosophy-visual" delay={0.1}><SystemDiagram /></Reveal></div><div className="principles">{principles.map((principle, i) => <Reveal className="principle" delay={i * 0.06} key={principle.title}><h3>{principle.title}</h3>{principle.copy.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}</Reveal>)}</div></section>
+      <section className="about section" id="about" aria-labelledby="about-title"><Reveal className="section-kicker"><span>About</span></Reveal><div className="about-heading"><Reveal><p className="eyebrow">How I work</p><h2 id="about-title">Business context first.<br />Hands-on enough to deliver.</h2></Reveal><Reveal className="about-lead" delay={0.06}><p>I do not treat leadership and technical execution as separate identities. The advantage comes from combining them.</p></Reveal></div><div className="about-grid"><Reveal><h3>Start with the operation</h3><p>I begin with the people, process, incentives, data, constraints, and cost of failure—not a preferred platform. That keeps the work tied to business value.</p></Reveal><Reveal delay={0.04}><h3>Stay close to delivery</h3><p>Remaining hands-on makes strategy more practical. It exposes integration details, operating friction, and adoption risks early enough to address them.</p></Reveal><Reveal delay={0.08}><h3>Design for what happens next</h3><p>Governance, security, support, reliability, ownership, and measurable outcomes are part of the solution—not tasks deferred until after launch.</p></Reveal></div><Reveal className="about-close"><p>That perspective lets me work comfortably with executives, operational leaders, technical teams, and end users—translating between what the organization needs and what the system must do.</p><a className="section-link" href="#contact">Discuss a leadership or delivery opportunity <ArrowRight size={15} /></a></Reveal></section>
 
-      <section className="systems section" id="systems" aria-labelledby="systems-title"><Reveal className="section-kicker"><span>Representative systems</span></Reveal><Reveal className="systems-intro"><div><p className="eyebrow">Architecture in operation</p><h2 id="systems-title">The work behind<br />the interface.</h2></div><p>Representative enterprise cases, generalized to protect operational detail. Each begins with the operating problem—not a preferred platform.</p></Reveal><div className="system-cards">{capabilityCards.map((card, i) => { const Icon = capabilityIcons[card.id] ?? Braces; return <Reveal className="system-card" delay={i * 0.07} key={card.id}><div className="card-top"><Icon size={20} /></div><p className="eyebrow">{card.category}</p><h3>{card.title}</h3><dl><div><dt>Problem</dt><dd>{card.problem}</dd></div><div><dt>Architecture</dt><dd>{card.architecture}</dd></div><div><dt>Scale</dt><dd>{card.scale}</dd></div><div><dt>Operational result</dt><dd>{card.operationalResult}</dd></div><div><dt>Business value</dt><dd>{card.businessValue}</dd></div></dl></Reveal>; })}</div><Reveal><AccomplishmentsShowcase /></Reveal></section>
-
-      <section className="evidence section" aria-labelledby="evidence-title"><Reveal className="section-kicker"><span>Operating record</span></Reveal><Reveal className="evidence-heading"><div><p className="eyebrow">Evidence at scale</p><h2 id="evidence-title">Accountability,<br />measured.</h2></div><p>Across infrastructure, public-sector leadership, automation, and AI, the standard remains consistent: resilient operations, explicit accountability, and outcomes the organization can sustain.</p></Reveal><div className="evidence-metrics" aria-label="Career evidence"><Reveal><strong>30+</strong><span>Years across infrastructure, leadership, automation, and AI</span></Reveal><Reveal delay={0.04}><strong>99.999%</strong><span>Carrier-grade SLA supporting tens of millions of monthly calls</span></Reveal><Reveal delay={0.08}><strong>60+</strong><span>County departments, offices, and bureaus served</span></Reveal><Reveal delay={0.12}><strong>8</strong><span>Years leading countywide technology as CIO</span></Reveal></div><Reveal className="now-block" delay={0.1}><p className="eyebrow">Current practice / 2026</p><h3>Testing the edge.<br />Keeping what works.</h3><p>Current work centers on production agent workflows, AI-assisted software delivery, enterprise voice systems, and the governance required to connect them safely to real operations.</p><div className="now-links"><a href="https://www.linkedin.com/in/troystone" target="_blank" rel="noreferrer">View professional record <ArrowUpRight size={15} /></a></div></Reveal></section>
+      <section className="philosophy section" id="perspective" aria-labelledby="philosophy-title"><Reveal className="section-kicker"><span>Point of view</span></Reveal><div className="philosophy-grid"><Reveal className="philosophy-content"><p className="eyebrow">The practical AI thesis</p><h2 id="philosophy-title">Intelligence is a layer—not an application or a model.<br />The system is the product.</h2><p className="philosophy-copy">A useful AI system knows what it may access, which actions it may take, when a person must decide, and how every action becomes observable. Without guardrails, intelligence is risk. Without auditability, it is difficult to trust. The model matters. The surrounding architecture matters more.</p></Reveal><Reveal className="philosophy-visual" delay={0.1}><SystemDiagram /></Reveal></div><div className="principles">{principles.map((principle, i) => <Reveal className="principle" delay={i * 0.06} key={principle.title}><h3>{principle.title}</h3>{principle.copy.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}</Reveal>)}</div><Reveal className="philosophy-next"><a className="section-link" href="#contact">Discuss a practical AI opportunity <ArrowRight size={15} /></a></Reveal></section>
 
       <section className="contact section" id="contact" aria-labelledby="contact-title"><Reveal><p className="eyebrow"><span className="status-dot" /> Complex systems. Meaningful outcomes.</p><h2 id="contact-title">Let&apos;s turn complexity into<br /><em>clarity.</em></h2><p>If you&apos;re modernizing a critical system, connecting AI to operations, or working through a consequential technology decision, I&apos;d welcome the conversation.</p><a className="button button-primary contact-button" href="https://truecore.services/" target="_blank" rel="noreferrer"><span className="truecore-cta-copy">Connect with Troy and Jesse at <span className="truecore-name"><Image className="truecore-logo" src="/truecore-logo.png" alt="" width={24} height={18} />TrueCore</span></span> <ArrowUpRight size={17} /></a></Reveal></section>
     </main>

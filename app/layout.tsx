@@ -4,7 +4,7 @@ import "./globals.css";
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.troystone.dev"),
   title: { default: "Troy Stone — Enterprise Systems Architect", template: "%s — Troy Stone" },
-  description: "Three decades building resilient enterprise infrastructure, leading technology organizations, automating operations, and deploying accountable intelligent systems.",
+  description: "Technology leadership and hands-on execution that reduce operating friction, connect systems, improve decisions, and move organizations forward.",
   keywords: ["Troy Stone", "enterprise architecture", "agentic AI", "Power Platform", "Microsoft 365", "enterprise automation"],
   authors: [{ name: "Troy Stone", url: "https://www.troystone.dev" }], creator: "Troy Stone",
   alternates: { canonical: "/" },
@@ -18,8 +18,8 @@ export const metadata: Metadata = {
     shortcut: "/favicon.ico",
     apple: { url: "/apple-touch-icon.png", type: "image/png", sizes: "180x180" },
   },
-  openGraph: { type: "website", locale: "en_US", url: "https://www.troystone.dev", siteName: "Troy Stone", title: "Troy Stone — Enterprise Systems Architect", description: "Building intelligent systems organizations trust and deploy.", images: [{ url: "/og-troy-stone.png", width: 1200, height: 630, alt: "Troy Stone, Enterprise Systems Architect — Building intelligent systems organizations trust and deploy." }] },
-  twitter: { card: "summary_large_image", title: "Troy Stone — Enterprise Systems Architect", description: "Building intelligent systems organizations trust and deploy.", images: ["/og-troy-stone.png"] },
+  openGraph: { type: "website", locale: "en_US", url: "https://www.troystone.dev", siteName: "Troy Stone", title: "Troy Stone — Enterprise Systems Architect", description: "Technology leadership and hands-on execution that move organizations forward.", images: [{ url: "/og-troy-stone.png", width: 1200, height: 630, alt: "Troy Stone, Enterprise Systems Architect" }] },
+  twitter: { card: "summary_large_image", title: "Troy Stone — Enterprise Systems Architect", description: "Technology leadership and hands-on execution that move organizations forward.", images: ["/og-troy-stone.png"] },
   robots: { index: true, follow: true },
 };
 
