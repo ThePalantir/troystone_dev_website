@@ -18,7 +18,7 @@ export function SystemDiagram() {
   return <div className="system-diagram-figure" aria-label={diagramDescription} role="img">
     <div className="system-diagram system-diagram-desktop" aria-hidden="true">
       <div className="diagram-grid" /><div className="diagram-path path-a" /><div className="diagram-path path-b" />
-      <span className="diagram-node node-a">Business context</span><span className="diagram-node node-b">Architecture</span><span className="diagram-node node-e">Guardrails</span><span className="diagram-node node-c">Automation</span><span className="diagram-node node-d">Human judgment</span><span className="diagram-node node-f">Observability / Auditability</span><div className="diagram-core">Useful<br />intelligence</div>
+      <span className="diagram-node node-a">Business context</span><span className="diagram-node node-b">Architecture</span><span className="diagram-node node-e">Guardrails</span><span className="diagram-node node-c">Automation</span><span className="diagram-node node-d">Human judgment</span><span className="diagram-node node-f">Observability / Auditability</span><div className="diagram-core">USEFUL<br />INTELLIGENCE</div>
     </div>
 
     <div className="mobile-system-model" aria-hidden="true">
@@ -73,7 +73,7 @@ export function SystemDiagram() {
             transition={{ duration: .5, delay: 1.45, ease: [0.22, 1, 0.36, 1] }}
           />
           <span>Outcome</span>
-          <strong>Useful intelligence</strong>
+          <strong>USEFUL INTELLIGENCE</strong>
           <p>Bounded. Observable. Accountable.</p>
         </motion.div>
       </div>

@@ -105,7 +105,7 @@ h1 em, .contact h2 em { color: #afb2b7; font-family: Georgia, "Times New Roman",
 .philosophy-copy { max-width: 610px; margin: 2rem 0 0; color: #565957; line-height: 1.75; font-size: 1.05rem; }
 .system-diagram { position: relative; min-height: 480px; overflow: hidden; border: 1px solid rgba(0,0,0,.15); background: #dedacf; }
 .diagram-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(0,0,0,.08) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,.08) 1px, transparent 1px); background-size: 48px 48px; mask-image: radial-gradient(circle, #000, transparent 80%); }
-.diagram-core { position: absolute; z-index: 3; left: 50%; top: 50%; translate: -50% -50%; width: 135px; aspect-ratio: 1; display: grid; place-items: center; text-align: center; border-radius: 50%; background: #14181d; color: #eeeae0; font-size: .75rem; letter-spacing: .05em; box-shadow: 0 22px 60px rgba(0,0,0,.25), 0 0 0 12px rgba(20,24,29,.08); }
+.diagram-core { position: absolute; z-index: 3; left: 50%; top: 50%; translate: -50% -50%; width: 155px; aspect-ratio: 1; display: grid; place-items: center; text-align: center; border-radius: 50%; background: #14181d; color: #eeeae0; font-size: 1rem; font-weight: 700; line-height: 1.2; letter-spacing: .08em; box-shadow: 0 22px 60px rgba(0,0,0,.25), 0 0 0 12px rgba(20,24,29,.08); }
 .diagram-core::after { content: ""; position: absolute; inset: -30px; border: 1px solid rgba(20,24,29,.2); border-radius: 50%; }
 .diagram-node { position: absolute; z-index: 2; padding: .55rem .7rem; border: 1px solid rgba(0,0,0,.18); background: rgba(232,228,218,.7); backdrop-filter: blur(8px); font-size: .61rem; text-transform: uppercase; letter-spacing: .08em; animation: diagram-drift 7s ease-in-out infinite alternate; }
 .diagram-node:nth-of-type(2) { animation-duration: 8.5s; animation-delay: -2s; }.diagram-node:nth-of-type(3) { animation-duration: 6.5s; animation-delay: -4s; }.diagram-node:nth-of-type(4) { animation-duration: 9s; animation-delay: -1s; }.diagram-node:nth-of-type(5) { animation-duration: 7.5s; animation-delay: -5s; }.diagram-node:nth-of-type(6) { animation-duration: 8s; animation-delay: -3s; }
@@ -229,7 +229,7 @@ footer .footer-links .linkedin-link:hover { color: #fff; background: #004182; tr
 [data-theme="light"] .node-year,
 [data-theme="light"] .node-label { font-size: .82rem; }
 [data-theme="light"] .chapter-meta { font-size: .88rem; }
-[data-theme="light"] .diagram-core { font-size: .84rem; }
+[data-theme="light"] .diagram-core { font-size: 1rem; }
 [data-theme="light"] .diagram-node { font-size: .82rem; font-weight: 600; }
 [data-theme="light"] .principle p { color: #4f524f; font-size: .95rem; }
 [data-theme="light"] .card-top span { font-size: .82rem; }
@@ -802,9 +802,9 @@ p { text-wrap: pretty; }
   }
   .model-outcome strong {
     font-size: clamp(1.65rem, 6.5vw, 2.25rem);
-    font-weight: 470;
+    font-weight: 650;
     line-height: 1.05;
-    letter-spacing: -.04em;
+    letter-spacing: .025em;
   }
   .model-outcome p {
     margin: .65rem 0 0;
