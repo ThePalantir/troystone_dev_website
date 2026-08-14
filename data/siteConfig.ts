@@ -11,5 +11,5 @@ type SiteLinks = {
 export const siteLinks: SiteLinks = {
   linkedIn: "https://www.linkedin.com/in/troystone",
   trueCore: "https://truecore.services/",
-  bookingUrl: process.env.NEXT_PUBLIC_BOOKING_URL?.trim() || null,
+  bookingUrl: "https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ05-YSHn-MGMi-7JYKK2iYb5U7LWHD_d7QUy4Nz69KnvWLmKJoSH5H2w-HfOwE_bzUjBcsus4jY",
 };
