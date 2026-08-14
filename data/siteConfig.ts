@@ -2,7 +2,14 @@ export const featureFlags = {
   showTrueCore: false,
 } as const;
 
-export const siteLinks = {
+type SiteLinks = {
+  linkedIn: string;
+  trueCore: string;
+  bookingUrl: string | null;
+};
+
+export const siteLinks: SiteLinks = {
   linkedIn: "https://www.linkedin.com/in/troystone",
   trueCore: "https://truecore.services/",
-} as const;
+  bookingUrl: process.env.NEXT_PUBLIC_BOOKING_URL?.trim() || null,
+};
