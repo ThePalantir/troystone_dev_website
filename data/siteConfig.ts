@@ -1,5 +1,12 @@
 export const featureFlags = {
   showTrueCore: false,
+  showWeather: true,
+} as const;
+
+export const weatherWidget = {
+  forecastUrl: "https://forecast7.com/en/40d61n75d49/allentown/?unit=us",
+  labelPrimary: "LEHIGH VALLEY",
+  labelSecondary: "PA",
 } as const;
 
 type SiteLinks = {
