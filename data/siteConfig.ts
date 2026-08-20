@@ -20,3 +20,9 @@ export const siteLinks: SiteLinks = {
   trueCore: "https://truecore.services/",
   bookingUrl: "https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ05-YSHn-MGMi-7JYKK2iYb5U7LWHD_d7QUy4Nz69KnvWLmKJoSH5H2w-HfOwE_bzUjBcsus4jY",
 };
+
+export function getBookingEmbedUrl(bookingUrl: string) {
+  const url = new URL(bookingUrl);
+  url.searchParams.set("gv", "true");
+  return url.toString();
+}

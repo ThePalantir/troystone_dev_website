@@ -41,16 +41,14 @@ export function SiteFooter() {
       )}
       <div className="footer-contact-links">
         {siteLinks.bookingUrl && (
-          <a
+          <Link
             className="calendar-link"
-            href={siteLinks.bookingUrl}
-            target="_blank"
-            rel="noopener noreferrer"
+            href="/schedule"
             aria-label="Schedule a conversation"
             title="Schedule a conversation"
           >
             <CalendarDays size={16} strokeWidth={1.7} aria-hidden="true" />
-          </a>
+          </Link>
         )}
         <a className="linkedin-link" href={siteLinks.linkedIn} aria-label="LinkedIn">in</a>
       </div>
