@@ -166,8 +166,9 @@ footer > div a:hover { color: #fff; }
 .weather-widget-shell .weatherwidget-io { display: flex; min-height: 67px; align-items: center; color: #aeb2b8; font-size: .68rem; font-weight: 650; line-height: 1.2; letter-spacing: .035em; text-transform: uppercase; }
 .weather-widget-shell iframe { width: 240px !important; max-width: none; transform: scale(.5); transform-origin: top left; }
 .footer-contact-links { display: flex; align-items: center; gap: .7rem; }
-.footer-contact-links .calendar-link { display: grid; width: 28px; height: 28px; place-items: center; border: 1px solid var(--line); border-radius: 50%; color: #aeb2b8; background: rgba(255,255,255,.025); transition: color .2s ease, border-color .2s ease, background-color .2s ease, transform .2s ease; }
+.footer-contact-links .calendar-link { display: grid; width: 28px; height: 28px; padding: 0; place-items: center; border: 1px solid var(--line); border-radius: 50%; color: #aeb2b8; background: rgba(255,255,255,.025); cursor: pointer; transition: color .2s ease, border-color .2s ease, background-color .2s ease, transform .2s ease; }
 .footer-contact-links .calendar-link:hover { color: #fff; border-color: rgba(255,255,255,.25); background: rgba(255,255,255,.06); transform: translateY(-1px); }
+.google-scheduling-popup-host { position: fixed; left: -10000px; top: 0; width: 1px; height: 1px; overflow: hidden; opacity: 0; pointer-events: none; }
 .built-by { display: inline-flex; align-items: center; gap: .3rem; color: #a3a6ab; font-size: .78rem; letter-spacing: .02em; }
 footer .built-by .truecore-link, footer .built-by .truecore-link:hover { display: inline-flex; align-items: center; gap: .3rem; color: var(--amber); font-size: inherit; font-weight: 700; }
 .truecore-logo { width: 20px; height: 15px; object-fit: contain; }
@@ -1116,9 +1117,9 @@ p { text-wrap: pretty; }
   gap: .45rem;
   margin-bottom: clamp(2.5rem, 5vw, 4rem);
   padding-bottom: .3rem;
-  border-bottom: 1px solid var(--line);
-  color: var(--muted);
-  font-size: .8rem;
+  border-bottom: 1px solid rgba(255,255,255,.24);
+  color: #d1d3d6;
+  font-size: .86rem;
   font-weight: 650;
   transition: color .2s ease, border-color .2s ease;
 }
@@ -1153,21 +1154,6 @@ p { text-wrap: pretty; }
   border: 0;
   background: #fff;
 }
-.schedule-fallback {
-  margin: 1.1rem 0 0;
-  color: var(--muted);
-  font-size: .78rem;
-  text-align: right;
-}
-.schedule-fallback a {
-  display: inline-flex;
-  align-items: center;
-  gap: .35rem;
-  color: #c8cbd0;
-  border-bottom: 1px solid var(--line);
-  transition: color .2s ease, border-color .2s ease;
-}
-.schedule-fallback a:hover { color: var(--amber); border-color: var(--amber); }
 .schedule-unavailable {
   min-height: 280px;
   margin: 4rem 0 0;
@@ -1176,14 +1162,13 @@ p { text-wrap: pretty; }
   color: var(--muted);
 }
 [data-theme="light"] .schedule-intro > p:last-child { color: #4f545a; }
-[data-theme="light"] .schedule-fallback a { color: #41464c; }
+[data-theme="light"] .schedule-back-link { color: #393e43; border-color: rgba(0,0,0,.28); }
 
 @media (max-width: 768px) {
   .schedule-content { padding-top: 8.5rem; }
   .schedule-intro h1 { font-size: clamp(3rem, 14vw, 4.6rem); }
   .schedule-frame-shell { min-height: 800px; border-radius: 6px; }
   .schedule-frame { height: 800px; }
-  .schedule-fallback { text-align: left; line-height: 1.7; }
 }
 
 @media (max-width: 420px) {
@@ -1191,5 +1176,4 @@ p { text-wrap: pretty; }
   .schedule-back-link, .schedule-intro { margin-inline: .5rem; }
   .schedule-frame-shell { min-height: 840px; border-inline: 0; }
   .schedule-frame { height: 840px; }
-  .schedule-fallback { margin-inline: .5rem; }
 }

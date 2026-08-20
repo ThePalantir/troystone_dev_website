@@ -27,7 +27,7 @@ export default function SchedulePage() {
         <section className="schedule-content" aria-labelledby="schedule-title">
           <Link className="schedule-back-link" href="/">
             <ArrowLeft size={15} aria-hidden="true" />
-            Back to home
+            Return to TroyStone.dev
           </Link>
 
           <div className="schedule-intro">
@@ -40,10 +40,7 @@ export default function SchedulePage() {
           </div>
 
           {bookingUrl ? (
-            <ScheduleEmbed
-              bookingUrl={bookingUrl}
-              embedUrl={getBookingEmbedUrl(bookingUrl)}
-            />
+            <ScheduleEmbed embedUrl={getBookingEmbedUrl(bookingUrl)} />
           ) : (
             <p className="schedule-unavailable">
               Scheduling is temporarily unavailable. Please check back soon.

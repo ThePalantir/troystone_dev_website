@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import Script from "next/script";
-import { CalendarDays } from "lucide-react";
+import { SchedulePopupControl } from "@/components/SchedulePopupControl";
 import { featureFlags, siteLinks, weatherWidget } from "@/data/siteConfig";
 
 export function SiteFooter() {
@@ -40,16 +40,7 @@ export function SiteFooter() {
         </div>
       )}
       <div className="footer-contact-links">
-        {siteLinks.bookingUrl && (
-          <Link
-            className="calendar-link"
-            href="/schedule"
-            aria-label="Schedule a conversation"
-            title="Schedule a conversation"
-          >
-            <CalendarDays size={16} strokeWidth={1.7} aria-hidden="true" />
-          </Link>
-        )}
+        {siteLinks.bookingUrl && <SchedulePopupControl bookingUrl={siteLinks.bookingUrl} />}
         <a className="linkedin-link" href={siteLinks.linkedIn} aria-label="LinkedIn">in</a>
       </div>
     </div>

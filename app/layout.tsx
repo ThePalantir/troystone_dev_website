@@ -31,5 +31,5 @@ export const viewport: Viewport = {
 const themeInitializationScript = `(function(){var theme='dark';try{var saved=localStorage.getItem('theme');if(saved==='light'||saved==='dark')theme=saved;}catch(e){}var root=document.documentElement;root.dataset.theme=theme;root.style.colorScheme=theme;var meta=document.querySelector('meta[data-site-theme="true"]');if(meta)meta.content=theme==='light'?'#f4f1e9':'#08090a';})();`;
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  return <html lang="en" data-theme="dark" style={{ colorScheme: "dark" }} suppressHydrationWarning><head><meta name="theme-color" content="#08090a" data-site-theme="true" /><script dangerouslySetInnerHTML={{ __html: themeInitializationScript }} /></head><body>{children}</body></html>;
+  return <html lang="en" data-theme="dark" style={{ colorScheme: "dark" }} suppressHydrationWarning><head><meta name="theme-color" content="#08090a" data-site-theme="true" /><link rel="stylesheet" href="https://calendar.google.com/calendar/scheduling-button-script.css" /><script src="https://calendar.google.com/calendar/scheduling-button-script.js" async /><script dangerouslySetInnerHTML={{ __html: themeInitializationScript }} /></head><body>{children}</body></html>;
 }
